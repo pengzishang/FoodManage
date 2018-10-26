@@ -17,5 +17,6 @@ target 'FoodManage' do
     pod 'IBAnimatable'
     pod 'Schedule'
     pod 'FMDB'
-    pod 'LinearProgressBar'
+    pod 'LDProgressView'
+    pod 'SnapKit'
 end

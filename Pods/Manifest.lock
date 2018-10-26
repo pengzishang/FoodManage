@@ -17,14 +17,15 @@ PODS:
   - Bugly (2.5.0)
   - DZNEmptyDataSet (1.8.1)
   - FDFullscreenPopGesture (1.1)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - IBAnimatable (5.2.1)
   - IQKeyboardManager (6.2.0)
-  - JCore (1.2.5)
-  - JPush (3.1.1.1):
-    - JCore (~> 1.2.5)
+  - LDProgressView (1.2.1)
   - MBProgressHUD (1.1.0)
   - Schedule (1.0.0)
-  - SSZipArchive (2.1.4)
+  - SnapKit (4.2.0)
   - WRNavigationBar (1.2.0)
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
@@ -33,12 +34,13 @@ DEPENDENCIES:
   - Bugly
   - DZNEmptyDataSet
   - FDFullscreenPopGesture
+  - FMDB
   - IBAnimatable
   - IQKeyboardManager
-  - JPush
+  - LDProgressView
   - MBProgressHUD
   - Schedule
-  - SSZipArchive
+  - SnapKit
   - WRNavigationBar
   - YTKNetwork
 
@@ -48,13 +50,13 @@ SPEC REPOS:
     - Bugly
     - DZNEmptyDataSet
     - FDFullscreenPopGesture
+    - FMDB
     - IBAnimatable
     - IQKeyboardManager
-    - JCore
-    - JPush
+    - LDProgressView
     - MBProgressHUD
     - Schedule
-    - SSZipArchive
+    - SnapKit
     - WRNavigationBar
     - YTKNetwork
 
@@ -63,16 +65,16 @@ SPEC CHECKSUMS:
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   IBAnimatable: a46b835ec6875178516cf7e014a40194d6bfa3fc
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
-  JCore: 14706de2640b25fb77dbd02332696491407f37c9
-  JPush: 25dd9013fbe106082c14f9f30a82364ee98852fb
+  LDProgressView: f6afc7c30d2a9edf33001515f3189338567a32d2
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   Schedule: 64f334e01daa6f80201ab147b59cb4f1e118ae74
-  SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 5f109dca4f6221262d44fb2b85cfbb19e193fb7e
+PODFILE CHECKSUM: e1b0b6eb946bf18b0fc5c873159b66de0dd880f1
 
 COCOAPODS: 1.5.3
