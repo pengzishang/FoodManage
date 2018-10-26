@@ -8,14 +8,14 @@ target 'FoodManage' do
     inhibit_all_warnings!
     
     pod 'Bugly'
-    pod 'IQKeyboardManager'#键盘弹出高度处理
-    pod 'JPush'
+    pod 'IQKeyboardManager'#键盘弹出高度
     pod 'MBProgressHUD'
     pod 'FDFullscreenPopGesture'
     pod 'WRNavigationBar'
     pod 'YTKNetwork'
-    pod 'SSZipArchive'
     pod 'DZNEmptyDataSet'
     pod 'IBAnimatable'
     pod 'Schedule'
+    pod 'FMDB'
+    pod 'LinearProgressBar'
 end

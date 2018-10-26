@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6405920A218314DD003CF5C7 /* UIButton+FontScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 64059209218314DD003CF5C7 /* UIButton+FontScale.m */; };
 		64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515921807B0700A0EB07 /* UIViewController+ClassNamePrint.m */; };
 		64BD515F21807B0C00A0EB07 /* LoadingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515E21807B0C00A0EB07 /* LoadingMethods.m */; };
 		64BD516421807B2000A0EB07 /* EasyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD516021807B2000A0EB07 /* EasyView.swift */; };
@@ -54,6 +55,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		64059208218314DD003CF5C7 /* UIButton+FontScale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+FontScale.h"; sourceTree = "<group>"; };
+		64059209218314DD003CF5C7 /* UIButton+FontScale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+FontScale.m"; sourceTree = "<group>"; };
 		64BD515621807B0600A0EB07 /* FoodManage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodManage-Bridging-Header.h"; sourceTree = "<group>"; };
 		64BD515721807B0700A0EB07 /* UIViewController+ClassNamePrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ClassNamePrint.h"; sourceTree = "<group>"; };
 		64BD515821807B0700A0EB07 /* UIViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Refresh.m"; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				64BD515921807B0700A0EB07 /* UIViewController+ClassNamePrint.m */,
 				64BD515A21807B0700A0EB07 /* UIViewController+Refresh.h */,
 				64BD515821807B0700A0EB07 /* UIViewController+Refresh.m */,
+				64059208218314DD003CF5C7 /* UIButton+FontScale.h */,
+				64059209218314DD003CF5C7 /* UIButton+FontScale.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */,
 				64BD516621807B2000A0EB07 /* EasyImageView.swift in Sources */,
 				64E23487217CD10C004F98D0 /* AppDelegate.swift in Sources */,
+				6405920A218314DD003CF5C7 /* UIButton+FontScale.m in Sources */,
 				64BD517421819D8900A0EB07 /* PushManager.swift in Sources */,
 				64BD51772181AC7700A0EB07 /* HomePageController.swift in Sources */,
 			);
