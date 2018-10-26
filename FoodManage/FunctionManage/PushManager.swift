@@ -45,7 +45,7 @@ class PushManager: NSObject {
         
         
         
-        let request = UNNotificationRequest.init(identifier: "request", content: content, trigger: trigger)
+        let request = UNNotificationRequest.init(identifier: "myNotificationCategory", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error) in
             print("222222")
         }
