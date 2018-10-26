@@ -1,0 +1,14 @@
+/* 
+  InfoPlist.strings
+  FoodManage
+
+  Created by DeshPeng on 2018/10/25.
+  Copyright © 2018 pzs. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "FoodManage";
+NSCameraUsageDescription = "Used to open camera";
+NSContactsUsageDescription = "Used to open contacts";
+NSLocationWhenInUseUsageDescription = "Used to open location";
+NSMicrophoneUsageDescription = "Used to open microphone";
+NSPhotoLibraryUsageDescription = "Used to open photos";

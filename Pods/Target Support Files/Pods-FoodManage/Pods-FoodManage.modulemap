@@ -1,0 +1,6 @@
+framework module Pods_FoodManage {
+  umbrella header "Pods-FoodManage-umbrella.h"
+
+  export *
+  module * { export * }
+}

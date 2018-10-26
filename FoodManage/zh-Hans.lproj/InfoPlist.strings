@@ -1,0 +1,14 @@
+/* 
+  InfoPlist.strings
+  FoodManage
+
+  Created by DeshPeng on 2018/10/25.
+  Copyright © 2018 pzs. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "食品管理";
+NSCameraUsageDescription = "用于打开相机";
+NSContactsUsageDescription = "用于打开联系人";
+NSLocationWhenInUseUsageDescription = "用于打开定位";
+NSMicrophoneUsageDescription = "用于打开耳机";
+NSPhotoLibraryUsageDescription = "用于打开相册";
