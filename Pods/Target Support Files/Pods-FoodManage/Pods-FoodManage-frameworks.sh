@@ -149,10 +149,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/LDProgressView/LDProgressView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WRNavigationBar/WRNavigationBar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework"
 fi
@@ -163,10 +163,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/LDProgressView/LDProgressView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WRNavigationBar/WRNavigationBar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework"
 fi

@@ -17,6 +17,7 @@
 @property (nonatomic) CGSize stripeSize;
 
 @property (nonatomic, strong) NSString *progressTextOverride;
+@property (nonatomic, strong) UIColor *progressTextColorOverride;
 
 // Animation of progress
 @property (nonatomic, strong) NSTimer *animationTimer;
@@ -44,6 +45,7 @@
 
 - (void)initialize {
     self.backgroundColor = [UIColor clearColor];
+    self.textAlignment = NSTextAlignmentRight;
 }
 
 - (void)setAnimate:(NSNumber *)animate {
@@ -81,11 +83,20 @@
 }
 
 - (void)incrementOffset {
-    if (self.offset >= 0) {
-        self.offset = -self.stripeWidth;
+    if (self.animateDirection == LDAnimateDirectionForward) {
+        if (self.offset >= 0) {
+            self.offset = -self.stripeWidth;
+        } else {
+            self.offset += 1;
+        }
     } else {
-        self.offset += 1;
+        if (self.offset <= -self.stripeWidth) {
+            self.offset = 0;
+        } else {
+            self.offset -= 1;
+        }
     }
+    
     [self setNeedsDisplay];
 }
 
@@ -184,10 +195,13 @@
     if ([self.showStroke boolValue]) {
         CGContextSetStrokeColorWithColor(context, [[self.color darkerColor] darkerColor].CGColor);
         [roundedRect stroke];
+    } else {
+        CGContextSetStrokeColorWithColor(context, self.color.CGColor);
+        [roundedRect stroke];
     }
 
     if ([self.showText boolValue]) {
-        [self drawRightAlignedLabelInRect:insetRect];
+        [self drawLabelInRect:insetRect];
     }
 }
 
@@ -222,17 +236,25 @@
     CGContextRestoreGState(context);
 }
 
-- (void)drawRightAlignedLabelInRect:(CGRect)rect {
-    if (rect.size.width > 40) {
-        UILabel *label = [[UILabel alloc] initWithFrame:rect];
-        label.adjustsFontSizeToFitWidth = YES;
-        label.backgroundColor = [UIColor clearColor];
-        label.textAlignment = NSTextAlignmentRight;
-        label.text = self.progressTextOverride ? self.progressTextOverride : [NSString stringWithFormat:@"%.0f%%", self.progress*100];
-        label.font = [UIFont boldSystemFontOfSize:17-self.progressInset.floatValue*1.75];
-        UIColor *baseLabelColor = [self.color isLighterColor] ? [UIColor blackColor] : [UIColor whiteColor];
-        label.textColor = [baseLabelColor colorWithAlphaComponent:0.6];
+- (void)drawLabelInRect:(CGRect)rect {
+    UILabel *label = [[UILabel alloc] initWithFrame:rect];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = self.progressTextOverride ? self.progressTextOverride : [NSString stringWithFormat:@"%.0f%%", self.progress*100];
+
+    UIFont *font = [UIFont systemFontOfSize:12];
+    CGSize size = [label.text sizeWithAttributes:@{NSFontAttributeName: font}];
+    float pointsPerPixel =  font.pointSize / size.height;
+
+    label.font = [UIFont boldSystemFontOfSize:rect.size.height * pointsPerPixel];
+    UIColor *baseLabelColor = [self.color isLighterColor] ? [UIColor blackColor] : [UIColor whiteColor];
+    label.textColor = self.progressTextColorOverride ? self.progressTextColorOverride : [baseLabelColor colorWithAlphaComponent:0.6];
+
+    CGFloat width = [label.text sizeWithAttributes:@{NSFontAttributeName: label.font}].width;
+    if (rect.size.width > width+8) {
+        label.textAlignment = self.textAlignment;
         [label drawTextInRect:CGRectMake(rect.origin.x + 6, rect.origin.y, rect.size.width-12, rect.size.height)];
+    } else {
+        [label drawTextInRect:CGRectMake(rect.origin.x + size.width + 8, rect.origin.y, width, rect.size.height)];
     }
 }
 
@@ -336,5 +358,12 @@
     self.progressTextOverride = progressText;
     [self setNeedsDisplay];
 }
+
+- (void)overrideProgressTextColor:(UIColor *)progressTextColor {
+    self.progressTextColorOverride = progressTextColor;
+    [self setNeedsDisplay];
+}
+
+
 
 @end

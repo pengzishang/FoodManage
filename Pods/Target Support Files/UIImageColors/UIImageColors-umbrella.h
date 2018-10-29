@@ -10,9 +10,7 @@
 #endif
 #endif
 
-#import "LDProgressView.h"
-#import "UIColor+RGBValues.h"
 
-FOUNDATION_EXPORT double LDProgressViewVersionNumber;
-FOUNDATION_EXPORT const unsigned char LDProgressViewVersionString[];
+FOUNDATION_EXPORT double UIImageColorsVersionNumber;
+FOUNDATION_EXPORT const unsigned char UIImageColorsVersionString[];
 

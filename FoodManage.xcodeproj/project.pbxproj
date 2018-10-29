@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6405920A218314DD003CF5C7 /* UIButton+FontScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 64059209218314DD003CF5C7 /* UIButton+FontScale.m */; };
+		640592102186AE22003CF5C7 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 6405920C2186AE22003CF5C7 /* UIColor+RGBValues.m */; };
+		640592112186AE22003CF5C7 /* LDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6405920F2186AE22003CF5C7 /* LDProgressView.m */; };
+		640592152186C15D003CF5C7 /* AskPermissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640592142186C15D003CF5C7 /* AskPermissionController.swift */; };
+		640592172186C1A5003CF5C7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640592162186C1A5003CF5C7 /* TabBarController.swift */; };
+		6405921A2186DF59003CF5C7 /* Demo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 640592192186DF59003CF5C7 /* Demo.mov */; };
+		6405921C2186E0A5003CF5C7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6405921B2186E0A5003CF5C7 /* AVFoundation.framework */; };
 		64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515921807B0700A0EB07 /* UIViewController+ClassNamePrint.m */; };
 		64BD515F21807B0C00A0EB07 /* LoadingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515E21807B0C00A0EB07 /* LoadingMethods.m */; };
 		64BD516421807B2000A0EB07 /* EasyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD516021807B2000A0EB07 /* EasyView.swift */; };
@@ -57,6 +63,15 @@
 /* Begin PBXFileReference section */
 		64059208218314DD003CF5C7 /* UIButton+FontScale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+FontScale.h"; sourceTree = "<group>"; };
 		64059209218314DD003CF5C7 /* UIButton+FontScale.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+FontScale.m"; sourceTree = "<group>"; };
+		6405920C2186AE22003CF5C7 /* UIColor+RGBValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBValues.m"; sourceTree = "<group>"; };
+		6405920D2186AE22003CF5C7 /* LDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDProgressView.h; sourceTree = "<group>"; };
+		6405920E2186AE22003CF5C7 /* UIColor+RGBValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBValues.h"; sourceTree = "<group>"; };
+		6405920F2186AE22003CF5C7 /* LDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDProgressView.m; sourceTree = "<group>"; };
+		640592142186C15D003CF5C7 /* AskPermissionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskPermissionController.swift; sourceTree = "<group>"; };
+		640592162186C1A5003CF5C7 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		640592182186DE58003CF5C7 /* DemoV.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = DemoV.mp4; sourceTree = "<group>"; };
+		640592192186DF59003CF5C7 /* Demo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Demo.mov; sourceTree = "<group>"; };
+		6405921B2186E0A5003CF5C7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		64BD515621807B0600A0EB07 /* FoodManage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodManage-Bridging-Header.h"; sourceTree = "<group>"; };
 		64BD515721807B0700A0EB07 /* UIViewController+ClassNamePrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ClassNamePrint.h"; sourceTree = "<group>"; };
 		64BD515821807B0700A0EB07 /* UIViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Refresh.m"; sourceTree = "<group>"; };
@@ -97,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6405921C2186E0A5003CF5C7 /* AVFoundation.framework in Frameworks */,
 				64BD51852181D2EA00A0EB07 /* UserNotificationsUI.framework in Frameworks */,
 				64BD51832181D2EA00A0EB07 /* UserNotifications.framework in Frameworks */,
 			);
@@ -116,6 +132,7 @@
 		1CDC1B0103FA6F6EC94F116B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6405921B2186E0A5003CF5C7 /* AVFoundation.framework */,
 				F201FEFC9A264F1F4AB13552 /* Pods_FoodManage.framework */,
 				64BD51822181D2EA00A0EB07 /* UserNotifications.framework */,
 				64BD51842181D2EA00A0EB07 /* UserNotificationsUI.framework */,
@@ -130,6 +147,25 @@
 				B888E07A45550B236FC79042 /* Pods-FoodManage.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6405920B2186AE0E003CF5C7 /* Three Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				640592122186AE6B003CF5C7 /* LDProgressView */,
+			);
+			path = "Three Plugin";
+			sourceTree = "<group>";
+		};
+		640592122186AE6B003CF5C7 /* LDProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				6405920D2186AE22003CF5C7 /* LDProgressView.h */,
+				6405920F2186AE22003CF5C7 /* LDProgressView.m */,
+				6405920E2186AE22003CF5C7 /* UIColor+RGBValues.h */,
+				6405920C2186AE22003CF5C7 /* UIColor+RGBValues.m */,
+			);
+			path = LDProgressView;
 			sourceTree = "<group>";
 		};
 		64BD516821807BF300A0EB07 /* Extension */ = {
@@ -170,16 +206,20 @@
 			isa = PBXGroup;
 			children = (
 				64BD51762181AC7700A0EB07 /* HomePageController.swift */,
+				640592142186C15D003CF5C7 /* AskPermissionController.swift */,
+				640592162186C1A5003CF5C7 /* TabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		64BD517C2181C8BA00A0EB07 /* Demo */ = {
+		64BD517C2181C8BA00A0EB07 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				640592182186DE58003CF5C7 /* DemoV.mp4 */,
+				640592192186DF59003CF5C7 /* Demo.mov */,
 				64BD517A2181C8B700A0EB07 /* Demo.png */,
 			);
-			path = Demo;
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		64BD51862181D2EA00A0EB07 /* FoodManageContentExtension */ = {
@@ -215,7 +255,8 @@
 		64E23485217CD10C004F98D0 /* FoodManage */ = {
 			isa = PBXGroup;
 			children = (
-				64BD517C2181C8BA00A0EB07 /* Demo */,
+				6405920B2186AE0E003CF5C7 /* Three Plugin */,
+				64BD517C2181C8BA00A0EB07 /* Resource */,
 				64E23486217CD10C004F98D0 /* AppDelegate.swift */,
 				64BD51752181ABFC00A0EB07 /* ViewControllers */,
 				64BD517221819D4C00A0EB07 /* FunctionManage */,
@@ -337,6 +378,7 @@
 				64BD517B2181C8B700A0EB07 /* Demo.png in Resources */,
 				64E23490217CD10F004F98D0 /* Assets.xcassets in Resources */,
 				64E2348E217CD10C004F98D0 /* Main.storyboard in Resources */,
+				6405921A2186DF59003CF5C7 /* Demo.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,10 +398,10 @@
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/LDProgressView/LDProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework",
 				"${BUILT_PRODUCTS_DIR}/WRNavigationBar/WRNavigationBar.framework",
 				"${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework",
 			);
@@ -371,10 +413,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LDProgressView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WRNavigationBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKNetwork.framework",
 			);
@@ -421,11 +463,15 @@
 				64BD516421807B2000A0EB07 /* EasyView.swift in Sources */,
 				64BD515F21807B0C00A0EB07 /* LoadingMethods.m in Sources */,
 				64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */,
+				640592152186C15D003CF5C7 /* AskPermissionController.swift in Sources */,
+				640592102186AE22003CF5C7 /* UIColor+RGBValues.m in Sources */,
 				64BD516621807B2000A0EB07 /* EasyImageView.swift in Sources */,
 				64E23487217CD10C004F98D0 /* AppDelegate.swift in Sources */,
 				6405920A218314DD003CF5C7 /* UIButton+FontScale.m in Sources */,
 				64BD517421819D8900A0EB07 /* PushManager.swift in Sources */,
+				640592172186C1A5003CF5C7 /* TabBarController.swift in Sources */,
 				64BD51772181AC7700A0EB07 /* HomePageController.swift in Sources */,
+				640592112186AE22003CF5C7 /* LDProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +537,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pzs.FoodManage.FoodManageContentExtension;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -511,6 +558,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pzs.FoodManage.FoodManageContentExtension;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;

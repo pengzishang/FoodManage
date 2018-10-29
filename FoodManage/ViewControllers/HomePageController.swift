@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Schedule
-import LDProgressView
+
 import SnapKit
 
 class HomePageController: UIViewController {
@@ -16,7 +15,7 @@ class HomePageController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        PushManager.share.addLocalNotification()
+        PushManager.share.addLocalNotification()
         
         
         // Do any additional setup after loading the view.
@@ -53,18 +52,20 @@ extension HomePageController : UITableViewDataSource,UITableViewDelegate {
 class HomeCell: UITableViewCell {
     @IBOutlet weak var progressView: UIView!
     
+    
     func data() {
         let progress = LDProgressView.init()
         progress.animate = true
         progress.color = UIColor.red
         progress.progress = 0.4
         progress.flat = true
-        progress.type = LDProgressStripes
+        progress.type = .stripes
         progress.progressInset = 1
         progress.background = UIColor.white
-        progress.showText = false
+//        progress.showText = false
         progress.showBackgroundInnerShadow = false
-        progress.outerStrokeWidth = 0
+        progress.animateDirection = .backward;
+//        progress.outerStrokeWidth = 0
         progress.borderRadius = 3
         self.progressView.addSubview(progress)
         progress.snp.makeConstraints { (make) in

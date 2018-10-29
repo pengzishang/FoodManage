@@ -17,9 +17,15 @@ class PushManager: NSObject {
     
     @IBAction func requestPushPermissions() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (_, error) in
-            print("\(error)")
+            UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (_) in
+                
+            })
+            print("\(error?.localizedDescription)")
         }
     }
+    
+    var didOpenAsk = UserDefaults.standard.value(forKey: "didOpenAsk")
+    
     
     open func addLocalNotification() {
         UNUserNotificationCenter.current().delegate = self
@@ -27,31 +33,48 @@ class PushManager: NSObject {
         content.title = "dddd"
         content.body = "ssss"
         content.subtitle = "sdsdsdsds"
-        content.userInfo = ["DD":"SS"]
-        content.sound = UNNotificationSound.default
-        
+
+        content.categoryIdentifier = "ddddddd"
+//        content.userInfo = ["IMG":imageURL]
         
         if let imageURL = Bundle.main.url(forResource: "Demo", withExtension: "png") {
             do {
-                let attachment = try UNNotificationAttachment.init(identifier: "ddd", url: imageURL, options: .none)
+                let attachment = try UNNotificationAttachment.init(identifier: "dddd", url: imageURL, options: .none)
                 content.attachments = [attachment]
+                
             }
             catch {
-                
+
             }
         }
     
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5, repeats: false)
         
         
+        let test1 = UNNotificationAction.init(identifier: "test1", title: "ok", options: .authenticationRequired)
+        let test2 = UNNotificationAction.init(identifier: "test2", title: "ok", options: .destructive)
+        let text  = UNTextInputNotificationAction.init(identifier: "yeah", title: "text", options: .authenticationRequired, textInputButtonTitle: "hahaha", textInputPlaceholder: "input")
+        let category = UNNotificationCategory.init(identifier: "ddddddd", actions: [test1,test2,text], intentIdentifiers: [], options: .customDismissAction)
+        UNUserNotificationCenter.current().setNotificationCategories([category])
         
-        let request = UNNotificationRequest.init(identifier: "myNotificationCategory", content: content, trigger: trigger)
+        let request = UNNotificationRequest.init(identifier: "ddddddd", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error) in
-            print("222222")
+            
         }
-        
+
+
     }
     
+    open func getStatus(_ isOpen:@escaping (Bool)->()){
+        UNUserNotificationCenter.current().getNotificationSettings { (setting) in
+            switch setting.alertSetting {
+            case .enabled:
+                isOpen(true)
+            default:
+                isOpen(false)
+            }
+        }
+    }
     
 }
 
