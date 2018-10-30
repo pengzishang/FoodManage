@@ -52,7 +52,6 @@ extension HomePageController : UITableViewDataSource,UITableViewDelegate {
 class HomeCell: UITableViewCell {
     @IBOutlet weak var progressView: UIView!
     
-    
     func data() {
         let progress = LDProgressView.init()
         progress.animate = true
@@ -61,7 +60,7 @@ class HomeCell: UITableViewCell {
         progress.flat = true
         progress.type = .stripes
         progress.progressInset = 1
-        progress.background = UIColor.white
+        progress.background = UIColor.clear
 //        progress.showText = false
         progress.showBackgroundInnerShadow = false
         progress.animateDirection = .backward;

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		640592172186C1A5003CF5C7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640592162186C1A5003CF5C7 /* TabBarController.swift */; };
 		6405921A2186DF59003CF5C7 /* Demo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 640592192186DF59003CF5C7 /* Demo.mov */; };
 		6405921C2186E0A5003CF5C7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6405921B2186E0A5003CF5C7 /* AVFoundation.framework */; };
+		6410B49C21884BFE00D35C6F /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6410B49B21884BFE00D35C6F /* NSDate+Extension.m */; };
+		6410B49E218857AE00D35C6F /* DataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6410B49D218857AE00D35C6F /* DataManger.swift */; };
+		6410B4A121885B4F00D35C6F /* FoodDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6410B49F21885B4F00D35C6F /* FoodDataModel.xcdatamodeld */; };
 		64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515921807B0700A0EB07 /* UIViewController+ClassNamePrint.m */; };
 		64BD515F21807B0C00A0EB07 /* LoadingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515E21807B0C00A0EB07 /* LoadingMethods.m */; };
 		64BD516421807B2000A0EB07 /* EasyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD516021807B2000A0EB07 /* EasyView.swift */; };
@@ -72,6 +75,10 @@
 		640592182186DE58003CF5C7 /* DemoV.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = DemoV.mp4; sourceTree = "<group>"; };
 		640592192186DF59003CF5C7 /* Demo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Demo.mov; sourceTree = "<group>"; };
 		6405921B2186E0A5003CF5C7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6410B49A21884BFD00D35C6F /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		6410B49B21884BFE00D35C6F /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		6410B49D218857AE00D35C6F /* DataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManger.swift; sourceTree = "<group>"; };
+		6410B4A021885B4F00D35C6F /* FoodDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodDataModel.xcdatamodel; sourceTree = "<group>"; };
 		64BD515621807B0600A0EB07 /* FoodManage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodManage-Bridging-Header.h"; sourceTree = "<group>"; };
 		64BD515721807B0700A0EB07 /* UIViewController+ClassNamePrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ClassNamePrint.h"; sourceTree = "<group>"; };
 		64BD515821807B0700A0EB07 /* UIViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Refresh.m"; sourceTree = "<group>"; };
@@ -168,9 +175,20 @@
 			path = LDProgressView;
 			sourceTree = "<group>";
 		};
+		6410B4A22188623800D35C6F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6410B49D218857AE00D35C6F /* DataManger.swift */,
+				6410B49F21885B4F00D35C6F /* FoodDataModel.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		64BD516821807BF300A0EB07 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				6410B49A21884BFD00D35C6F /* NSDate+Extension.h */,
+				6410B49B21884BFE00D35C6F /* NSDate+Extension.m */,
 				64BD515D21807B0C00A0EB07 /* LoadingMethods.h */,
 				64BD515E21807B0C00A0EB07 /* LoadingMethods.m */,
 				64BD515721807B0700A0EB07 /* UIViewController+ClassNamePrint.h */,
@@ -198,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				64BD517321819D8900A0EB07 /* PushManager.swift */,
+				6410B4A22188623800D35C6F /* Data */,
 			);
 			path = FunctionManage;
 			sourceTree = "<group>";
@@ -341,7 +360,7 @@
 				};
 			};
 			buildConfigurationList = 64E2347E217CD10C004F98D0 /* Build configuration list for PBXProject "FoodManage" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -401,6 +420,7 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework",
 				"${BUILT_PRODUCTS_DIR}/WRNavigationBar/WRNavigationBar.framework",
 				"${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework",
@@ -416,6 +436,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WRNavigationBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKNetwork.framework",
@@ -460,6 +481,7 @@
 			files = (
 				64BD516521807B2000A0EB07 /* EasyLabel.swift in Sources */,
 				64BD516721807B2000A0EB07 /* EasyButton.swift in Sources */,
+				6410B4A121885B4F00D35C6F /* FoodDataModel.xcdatamodeld in Sources */,
 				64BD516421807B2000A0EB07 /* EasyView.swift in Sources */,
 				64BD515F21807B0C00A0EB07 /* LoadingMethods.m in Sources */,
 				64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */,
@@ -469,9 +491,11 @@
 				64E23487217CD10C004F98D0 /* AppDelegate.swift in Sources */,
 				6405920A218314DD003CF5C7 /* UIButton+FontScale.m in Sources */,
 				64BD517421819D8900A0EB07 /* PushManager.swift in Sources */,
+				6410B49C21884BFE00D35C6F /* NSDate+Extension.m in Sources */,
 				640592172186C1A5003CF5C7 /* TabBarController.swift in Sources */,
 				64BD51772181AC7700A0EB07 /* HomePageController.swift in Sources */,
 				640592112186AE22003CF5C7 /* LDProgressView.m in Sources */,
+				6410B49E218857AE00D35C6F /* DataManger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,6 +786,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6410B49F21885B4F00D35C6F /* FoodDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6410B4A021885B4F00D35C6F /* FoodDataModel.xcdatamodel */,
+			);
+			currentVersion = 6410B4A021885B4F00D35C6F /* FoodDataModel.xcdatamodel */;
+			path = FoodDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 64E2347B217CD10C004F98D0 /* Project object */;
 }

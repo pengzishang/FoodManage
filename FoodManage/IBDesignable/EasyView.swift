@@ -68,10 +68,10 @@ class EasyView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        addShadow()
         addCorner()
+        addShadow()
     }
-
+    
     func addShadow() {
         if isShadowed {
             self.layer.shadowPath = UIBezierPath.init(roundedRect: self.bounds, byRoundingCorners: [.bottomLeft, .bottomRight, .topLeft, .topRight], cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
@@ -86,10 +86,12 @@ class EasyView: UIView {
         if isRounded {
             let roundedLength = self.frame.size.width<=self.frame.size.height ? self.frame.size.width : self.frame.size.height
             _cornerRadius = roundedLength/2
-            self.layer.cornerRadius = _cornerRadius
-        } else {
-            self.layer.cornerRadius = _cornerRadius
         }
+        self.layer.cornerRadius = _cornerRadius
+//        let bezierPath = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: _cornerRadius)
+//        let shadeLayer = CAShapeLayer.init()
+//        shadeLayer.path = bezierPath.cgPath
+//        self.layer.mask = shadeLayer
     }
 
 }

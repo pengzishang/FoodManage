@@ -19,5 +19,5 @@ target 'FoodManage' do
     pod 'FMDB'
     pod 'SnapKit'
     pod 'UIImageColors'
-
+    pod 'SwiftDate'
 end

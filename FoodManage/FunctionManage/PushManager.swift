@@ -20,12 +20,32 @@ class PushManager: NSObject {
             UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (_) in
                 
             })
-            print("\(error?.localizedDescription)")
         }
     }
     
-    var didOpenAsk = UserDefaults.standard.value(forKey: "didOpenAsk")
+    fileprivate var _didOpenAsk = UserDefaults.standard.bool(forKey: "didOpenAsk")
+    open var didOpenAsk : Bool {
+        set {
+            _didOpenAsk = newValue
+            UserDefaults.standard.set(newValue, forKey: "didOpenAsk")
+        } get {
+            return _didOpenAsk
+        }
+    }
     
+    fileprivate var _firstOpenTime : TimeInterval? = UserDefaults.standard.double(forKey: "firstOpenTime")
+    open var firstOpenTime : Date? {
+        set {
+            if let newValue = newValue {
+                UserDefaults.standard.set(newValue.timeIntervalSince1970, forKey: "firstOpenTime")
+            }
+        } get {
+            if let time = _firstOpenTime {
+                return Date.init(timeIntervalSince1970: time)
+            }
+            return nil
+        }
+    }
     
     open func addLocalNotification() {
         UNUserNotificationCenter.current().delegate = self

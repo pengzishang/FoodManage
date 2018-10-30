@@ -8,7 +8,8 @@
 
 import UIKit
 import AVFoundation
-import SnapKit
+import UserNotifications
+
 class AskPermissionController: UIViewController {
 
     @IBOutlet weak var leftImageView: UIImageView!
@@ -21,6 +22,7 @@ class AskPermissionController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        PushManager.share.firstOpenTime = Date()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,11 +33,31 @@ class AskPermissionController: UIViewController {
         self.player.play()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.player.pause()
+    }
+    
     @IBAction func didClickCancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+    @IBAction func didClickActivited(_ sender: Any) {
+        if PushManager.share.didOpenAsk {
+            if let url = URL.init(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: { (_) in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                })
+            }
+        } else {
+            PushManager.share.didOpenAsk = true
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (_, error) in
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     
     /*
     // MARK: - Navigation
