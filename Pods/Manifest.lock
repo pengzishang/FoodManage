@@ -30,6 +30,7 @@ PODS:
   - WRNavigationBar (1.2.0)
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
+  - zhPopupController (1.0.3)
 
 DEPENDENCIES:
   - Bugly
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - UIImageColors
   - WRNavigationBar
   - YTKNetwork
+  - zhPopupController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -62,6 +64,7 @@ SPEC REPOS:
     - UIImageColors
     - WRNavigationBar
     - YTKNetwork
+    - zhPopupController
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -78,7 +81,8 @@ SPEC CHECKSUMS:
   UIImageColors: c83669aff7ceb55a3b3f2c398f3b5c14632a267b
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
+  zhPopupController: 4e6bd734062cb9c7ebe8113568550bade168bed7
 
-PODFILE CHECKSUM: 5b82515f195dc0984425a2c3c6f8cf671881a821
+PODFILE CHECKSUM: 2c14e2b8f6b94b3615105ef646a9b44cf63ae25e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2

@@ -23,6 +23,22 @@ class AskPermissionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         PushManager.share.firstOpenTime = Date()
+        UIView.animate(withDuration: 2, delay: 2, options: .curveEaseInOut, animations: {
+            self.leftImageView.alpha = 1
+            self.leftSubTitle.alpha = 1
+        }) { (_) in
+            UIView.animate(withDuration: 2, animations: {
+                self.demoView.alpha = 1
+            }, completion: { (_) in
+                UIView.animate(withDuration: 2, animations: {
+                    self.activitedAsking.alpha = 1
+                }, completion: { (_) in
+                    UIView.animate(withDuration: 2, animations: {
+                        self.laterAsking.alpha = 1
+                    })
+                })
+            })
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

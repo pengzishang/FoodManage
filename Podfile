@@ -20,4 +20,5 @@ target 'FoodManage' do
     pod 'SnapKit'
     pod 'UIImageColors'
     pod 'SwiftDate'
+    pod 'zhPopupController'
 end

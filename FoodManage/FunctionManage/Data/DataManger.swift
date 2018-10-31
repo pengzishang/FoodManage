@@ -60,7 +60,7 @@ class DataManger: NSObject {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
-    
+
     func deleteWith(importDate: TimeInterval) {
         let fetchRequest: NSFetchRequest = FoodDateModel.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "importDate == %@", importDate)
@@ -70,31 +70,29 @@ class DataManger: NSObject {
                 context.delete(data)
             }
         } catch {
-            fatalError();
+            fatalError()
         }
         saveContext()
     }
-    
-
 
     public func insertFood(_ data: FoodDateModel) {
         saveContext()
     }
-    
+
     public func fetchAll() -> [FoodDateModel] {
         let fetchRequest: NSFetchRequest = FoodDateModel.fetchRequest()
         do {
             let result = try context.fetch(fetchRequest)
             return result
         } catch {
-            fatalError();
+            fatalError()
         }
     }
-    
+
 }
 
 extension FoodDateModel {
-    func importData(with data:FoodDateModel) {
+    func importData(with data: FoodDateModel) {
         self.duration = data.duration
         self.imageURL = data.imageURL
         self.importDate = data.importDate
