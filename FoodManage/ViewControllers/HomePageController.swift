@@ -8,12 +8,14 @@
 
 import UIKit
 import DZNEmptyDataSet
-import zhPopupController
+import WRNavigationBar
 import SnapKit
+import STPopup
+import QMUIKit
 
 class HomePageController: UIViewController {
     
-    @IBOutlet var emptyView: UIView!
+    @IBOutlet var emptyMainView: UIView!
     @IBOutlet var emptyTableGesture: UITapGestureRecognizer!
     
     lazy var addFoodVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddFoodController")
@@ -22,22 +24,34 @@ class HomePageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        self.showEmptyView(withText: "天哪,干干净净,难道冰箱里面没东西吗?", detailText: "", buttonTitle: "开始添加!", buttonAction: #selector(didBeginAdding(_:)))
+//        let image = UIImageView.init(image: UIImage.init(named: "basket"))
+////        1067:829
+//        image.qmui_sizeToFitKeepingImageAspectRatio(in: CGSize.init(width: self.view.frame.width/375*72, height: self.view.frame.width/375*72*829/1067))
+//        let btn = QMUIFillButton.init(fill: UIColor.blue, titleTextColor: UIColor.white)
+//        btn.setTitle("开始添加!", for: .normal)
+//
+//        self.showEmptyView()
+//        self.showEmptyView(with: UIImage.init(named: "basket"), text: "天哪,干干净净,难道冰箱里面没东西吗?", detailText: "", buttonTitle: "开始添加!", buttonAction: #selector(didBeginAdding(_:)))
 //        PushManager.share.addLocalNotification()
-        
-        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func didBeginAdding(_ sender: Any) {
-        self.zh_popupController.layoutType = .center
-        self.zh_popupController.slideStyle = .fromBottom
-//        self.zh_popupController.allowPan = true
-        self.zh_popupController.maskAlpha = 0.2
-        self.addFoodVC.view.frame  = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 500)
-        self.zh_popupController.presentContentView(self.addFoodVC.view, duration: 0.5, springAnimated: true)
+
+        let popupController  = STPopupController.init(rootViewController: addFoodVC)
+        popupController.containerView.layer.cornerRadius = 10
+        let bgView = UIView.init()
+        bgView.backgroundColor = UIColor.init(white: 0, alpha: 0.2)
+        popupController.backgroundView = bgView
+        popupController.navigationBar.tintColor = UIColor.white
+        popupController.navigationBar.barTintColor = UIColor.orange
+        popupController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        popupController.present(in: self, completion: nil)
         
     }
+    
+    
     
     /*
     // MARK: - Navigation
@@ -67,11 +81,11 @@ extension HomePageController : UITableViewDataSource,UITableViewDelegate {
 extension HomePageController : DZNEmptyDataSetSource ,DZNEmptyDataSetDelegate{
 
     func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
-        return self.emptyView
+        return self.emptyMainView
     }
-    
+
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-        return -50
+        return -80
     }
 }
 

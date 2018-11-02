@@ -20,5 +20,8 @@ target 'FoodManage' do
     pod 'SnapKit'
     pod 'UIImageColors'
     pod 'SwiftDate'
-    pod 'zhPopupController'
+    pod 'NVActivityIndicatorView'
+    pod 'fluid-slider'
+    pod 'STPopup'
+    pod 'QMUIKit'
 end

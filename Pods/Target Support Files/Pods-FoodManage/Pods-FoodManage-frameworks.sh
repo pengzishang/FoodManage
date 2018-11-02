@@ -160,13 +160,17 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/QMUIKit/QMUIKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WRNavigationBar/WRNavigationBar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/zhPopupController/zhPopupController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/fluid-slider/fluid_slider.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
@@ -176,13 +180,17 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/QMUIKit/QMUIKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WRNavigationBar/WRNavigationBar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/zhPopupController/zhPopupController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/fluid-slider/fluid_slider.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
