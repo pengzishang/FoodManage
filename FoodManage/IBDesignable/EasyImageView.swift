@@ -68,8 +68,8 @@ class EasyImageView: UIImageView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        addShadow()
         addCorner()
+        addShadow()
     }
 
     func addShadow() {
@@ -85,10 +85,8 @@ class EasyImageView: UIImageView {
     func addCorner() {
         if isRounded {
             let roundedLength = self.frame.size.width<=self.frame.size.height ? self.frame.size.width : self.frame.size.height
-            _cornerRadius = roundedLength/2
-            self.layer.cornerRadius = _cornerRadius
-        } else {
-            self.layer.cornerRadius = _cornerRadius
+            cornerRadius = roundedLength/2
         }
+        self.layer.cornerRadius = cornerRadius
     }
 }

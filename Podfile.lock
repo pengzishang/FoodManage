@@ -19,9 +19,6 @@ PODS:
   - FDFullscreenPopGesture (1.1)
   - fluid-slider (1.0.0):
     - pop
-  - FMDB (2.7.5):
-    - FMDB/standard (= 2.7.5)
-  - FMDB/standard (2.7.5)
   - IBAnimatable (5.2.1)
   - IQKeyboardManager (6.2.0)
   - MBProgressHUD (1.1.0)
@@ -294,7 +291,6 @@ PODS:
   - SnapKit (4.2.0)
   - STPopup (1.8.3)
   - SwiftDate (5.0.13)
-  - UIImageColors (2.0.1)
   - WRNavigationBar (1.2.0)
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
@@ -304,7 +300,6 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - FDFullscreenPopGesture
   - fluid-slider
-  - FMDB
   - IBAnimatable
   - IQKeyboardManager
   - MBProgressHUD
@@ -314,7 +309,6 @@ DEPENDENCIES:
   - SnapKit
   - STPopup
   - SwiftDate
-  - UIImageColors
   - WRNavigationBar
   - YTKNetwork
 
@@ -325,7 +319,6 @@ SPEC REPOS:
     - DZNEmptyDataSet
     - FDFullscreenPopGesture
     - fluid-slider
-    - FMDB
     - IBAnimatable
     - IQKeyboardManager
     - MBProgressHUD
@@ -336,7 +329,6 @@ SPEC REPOS:
     - SnapKit
     - STPopup
     - SwiftDate
-    - UIImageColors
     - WRNavigationBar
     - YTKNetwork
 
@@ -346,7 +338,6 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   fluid-slider: a19a991606a34a545cba9341e7422073b4ec3a66
-  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   IBAnimatable: a46b835ec6875178516cf7e014a40194d6bfa3fc
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -357,10 +348,9 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   STPopup: da1167250a01584af7bcccb898653185f223ec46
   SwiftDate: f4aea5fa9dee812485f34041121a4cbde01b0dee
-  UIImageColors: c83669aff7ceb55a3b3f2c398f3b5c14632a267b
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 19a89192426354333d126aee1f74b095cad2d591
+PODFILE CHECKSUM: bede590c9427c79c582c0c1a8c0e01f16cadb14f
 
 COCOAPODS: 1.6.0.beta.2

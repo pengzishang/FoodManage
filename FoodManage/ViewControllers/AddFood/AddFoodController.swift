@@ -9,29 +9,41 @@
 import UIKit
 import STPopup
 import QMUIKit
+import NVActivityIndicatorView
 
-class AddFoodController: UIViewController {
+class AddFoodController: QMUICommonViewController {
     
     lazy var addExpirationVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddExpirationController")
     
-    @IBOutlet weak var imageView: EasyImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        let width = (self.view.frame.width - 20 - 40)
-        let photoHeight = width * 2448/3264
-        self.contentSizeInPopup = CGSize.init(width: self.view.frame.width - 40, height: photoHeight + 120)
+    @IBOutlet weak var activityView: NVActivityIndicatorView!
+    @IBOutlet weak var imageView: EasyImageView!
+    @IBOutlet weak var photoHeight: NSLayoutConstraint!
+    @IBOutlet weak var photoWidth: NSLayoutConstraint!
+    var isNew = false
+    
+    
+    override func didInitialize() {
+        super.didInitialize()
+        self.title = "拍照!"
+        self.contentSizeInPopup = CGSize.init(width: UIScreen.main.bounds.width - 40, height: (UIScreen.main.bounds.width - 40) * 2448/3264 + 120)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        if !isNew {
+            let image = UIImage.init(named: "Capa1")
+            let ratio = image!.size.width/image!.size.height
+            let height = (UIScreen.main.bounds.width - 20 - 40) / ratio
+            self.photoHeight.constant = height
+            self.photoWidth.constant = (UIScreen.main.bounds.width - 20 - 40)
+            self.imageView.image = image
+        }
     }
-    
-
     
     
     @IBAction func didClickTakePhoto(_ sender: EasyButton) {
@@ -50,27 +62,10 @@ class AddFoodController: UIViewController {
                 self.presentAlbumViewController()
             }
         }))
+        alert.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: nil))
         self.present(alert, animated: true) {
             
         }
-//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-//            let takePhoto = UIImagePickerController.init(rootViewController: self)
-//            takePhoto.delegate = self
-//            self.present(takePhoto, animated: true) {
-//                
-//            }
-//        } else {
-//            //需要权限
-//        }
-        
-//        let takePhoto = UIImagePickerController()
-//        takePhoto.delegate = self
-//        self.present(takePhoto, animated: true) {
-//
-//        }
-//        self.contentSizeInPopup = CGSize.init(width: self.view.frame.width, height: 200)
-        
-//        self.popupController?.push(addExpirationVC, animated: true)
     }
     
     fileprivate func presentAlbumViewController() {
@@ -87,6 +82,8 @@ class AddFoodController: UIViewController {
     */
     
     fileprivate func putImage(with imageAsset:QMUIAsset) {
+        self.activityView.startAnimating()
+        isNew = true
         imageAsset.requestImageData({ (imageData, info, isGif, isHEIC) in
             var targetImage : UIImage
             if (isGif) {
@@ -94,29 +91,43 @@ class AddFoodController: UIViewController {
             } else {
                 targetImage = UIImage.init(data: imageData!)!
                 if (isHEIC) {
-                    // iOS 11 中新增 HEIF/HEVC 格式的资源，直接发送新格式的照片到不支持新格式的设备，照片可能会无法识别，可以先转换为通用的 JPEG 格式再进行使用。
-                    // 详细请浏览：https://github.com/QMUI/QMUI_iOS/issues/224
-                    
-                    let targetData = UIImage.init().jpegData(compressionQuality: 1)
+                    var targetImage = UIImage.init(data: imageData!)!
+                    let targetData = targetImage.jpegData(compressionQuality: 1)
                     targetImage = UIImage.init(data: targetData!)!
                 }
             }
-            self.imageView.image = targetImage
+            
+            self.changeImageView(with: targetImage)
         })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.activityView.stopAnimating()
+        }
+    }
+    
+    fileprivate func changeImageView(with image:UIImage) {
+        let ratio = image.size.width/image.size.height
+        let height = (UIScreen.main.bounds.width - 20 - 40) / ratio
+        if height > UIScreen.main.bounds.height - 300 {
+            self.photoHeight.constant = UIScreen.main.bounds.height - 300
+            self.photoWidth.constant = self.photoHeight.constant * ratio
+        } else {
+            self.photoHeight.constant = height
+            self.photoWidth.constant = (UIScreen.main.bounds.width - 20 - 40)
+        }
+        self.contentSizeInPopup = CGSize.init(width: self.view.frame.width, height: self.photoHeight.constant + 120)
+        self.imageView.image = image
     }
     
     @IBAction func unwindToAddFood(_ unwindSegue: UIStoryboardSegue) {
         if unwindSegue.identifier == AlbumPreviewController.unwindId {
             let sourceViewController = unwindSegue.source as! AlbumPreviewController
-//            [QMUIImagePickerHelper updateLastestAlbumWithAssetsGroup:imagePickerPreviewViewController.assetsGroup ablumContentType:kAlbumContentType userIdentify:nil];
-//            QMUIImagePickerHelper.updateLastestAlbum(with: sourceViewController.imageAsset, ablumContentType: .onlyPhoto, userIdentify: nil)
-//            let imageAsset = sourceViewController.imageAsset
             self.putImage(with: sourceViewController.imageAsset!)
         } else if unwindSegue.identifier == AlbumViewController.unwindId {
-//            let imageAsset = sourceViewController.imageAsset.
             let sourceViewController = unwindSegue.source as! AlbumViewController
-//            let imageAsset = sourceViewController.imageAssets?.first
             self.putImage(with: (sourceViewController.imageAssets?.first!)!)
+        } else if unwindSegue.identifier == AlbumNavigationController.unwind {
+            let sourceViewController = unwindSegue.source as! AlbumNavigationController
+            self.putImage(with: sourceViewController.imageAsset!)
         }
         // Use data from the view controller which initiated the unwind segue
     }

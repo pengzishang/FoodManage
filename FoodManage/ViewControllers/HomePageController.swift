@@ -38,7 +38,6 @@ class HomePageController: UIViewController {
     }
     
     @IBAction func didBeginAdding(_ sender: Any) {
-
         let popupController  = STPopupController.init(rootViewController: addFoodVC)
         popupController.containerView.layer.cornerRadius = 10
         let bgView = UIView.init()
@@ -48,7 +47,6 @@ class HomePageController: UIViewController {
         popupController.navigationBar.barTintColor = UIColor.orange
         popupController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         popupController.present(in: self, completion: nil)
-        
     }
     
     

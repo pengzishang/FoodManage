@@ -19,6 +19,8 @@
 		6410B4A121885B4F00D35C6F /* FoodDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6410B49F21885B4F00D35C6F /* FoodDataModel.xcdatamodeld */; };
 		6416BDE62189B4AD00CEFF3A /* AddFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416BDE52189B4AD00CEFF3A /* AddFoodController.swift */; };
 		6463619D218C5FEC007AE054 /* AddExpirationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463619C218C5FEC007AE054 /* AddExpirationController.swift */; };
+		646361A221902570007AE054 /* AlbumNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646361A121902570007AE054 /* AlbumNavigationController.swift */; };
+		646361A421902896007AE054 /* AlbumImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646361A321902896007AE054 /* AlbumImagePickerController.swift */; };
 		64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515921807B0700A0EB07 /* UIViewController+ClassNamePrint.m */; };
 		64BD515F21807B0C00A0EB07 /* LoadingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515E21807B0C00A0EB07 /* LoadingMethods.m */; };
 		64BD516421807B2000A0EB07 /* EasyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD516021807B2000A0EB07 /* EasyView.swift */; };
@@ -85,6 +87,8 @@
 		6410B4A021885B4F00D35C6F /* FoodDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodDataModel.xcdatamodel; sourceTree = "<group>"; };
 		6416BDE52189B4AD00CEFF3A /* AddFoodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodController.swift; sourceTree = "<group>"; };
 		6463619C218C5FEC007AE054 /* AddExpirationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpirationController.swift; sourceTree = "<group>"; };
+		646361A121902570007AE054 /* AlbumNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumNavigationController.swift; sourceTree = "<group>"; };
+		646361A321902896007AE054 /* AlbumImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumImagePickerController.swift; sourceTree = "<group>"; };
 		64BD515621807B0600A0EB07 /* FoodManage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodManage-Bridging-Header.h"; sourceTree = "<group>"; };
 		64BD515721807B0700A0EB07 /* UIViewController+ClassNamePrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ClassNamePrint.h"; sourceTree = "<group>"; };
 		64BD515821807B0700A0EB07 /* UIViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Refresh.m"; sourceTree = "<group>"; };
@@ -192,6 +196,18 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		646361A52190537F007AE054 /* AddFood */ = {
+			isa = PBXGroup;
+			children = (
+				6416BDE52189B4AD00CEFF3A /* AddFoodController.swift */,
+				646361A121902570007AE054 /* AlbumNavigationController.swift */,
+				64E30F10218F3166004145BA /* AlbumViewController.swift */,
+				646361A321902896007AE054 /* AlbumImagePickerController.swift */,
+				64E30F12218F331A004145BA /* AlbumPreviewController.swift */,
+			);
+			path = AddFood;
+			sourceTree = "<group>";
+		};
 		64BD516821807BF300A0EB07 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,9 +251,7 @@
 				64BD51762181AC7700A0EB07 /* HomePageController.swift */,
 				640592142186C15D003CF5C7 /* AskPermissionController.swift */,
 				640592162186C1A5003CF5C7 /* TabBarController.swift */,
-				6416BDE52189B4AD00CEFF3A /* AddFoodController.swift */,
-				64E30F12218F331A004145BA /* AlbumPreviewController.swift */,
-				64E30F10218F3166004145BA /* AlbumViewController.swift */,
+				646361A52190537F007AE054 /* AddFood */,
 				6463619C218C5FEC007AE054 /* AddExpirationController.swift */,
 			);
 			path = ViewControllers;
@@ -426,7 +440,6 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
-				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -436,7 +449,6 @@
 				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
-				"${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework",
 				"${BUILT_PRODUCTS_DIR}/WRNavigationBar/WRNavigationBar.framework",
 				"${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework",
 				"${BUILT_PRODUCTS_DIR}/fluid-slider/fluid_slider.framework",
@@ -447,7 +459,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
@@ -457,7 +468,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WRNavigationBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/fluid_slider.framework",
@@ -504,8 +514,10 @@
 				64BD516521807B2000A0EB07 /* EasyLabel.swift in Sources */,
 				64BD516721807B2000A0EB07 /* EasyButton.swift in Sources */,
 				6410B4A121885B4F00D35C6F /* FoodDataModel.xcdatamodeld in Sources */,
+				646361A221902570007AE054 /* AlbumNavigationController.swift in Sources */,
 				6416BDE62189B4AD00CEFF3A /* AddFoodController.swift in Sources */,
 				64BD516421807B2000A0EB07 /* EasyView.swift in Sources */,
+				646361A421902896007AE054 /* AlbumImagePickerController.swift in Sources */,
 				64E30F13218F331A004145BA /* AlbumPreviewController.swift in Sources */,
 				64BD515F21807B0C00A0EB07 /* LoadingMethods.m in Sources */,
 				64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */,

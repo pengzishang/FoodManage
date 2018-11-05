@@ -88,10 +88,6 @@ class EasyView: UIView {
             _cornerRadius = roundedLength/2
         }
         self.layer.cornerRadius = _cornerRadius
-//        let bezierPath = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: _cornerRadius)
-//        let shadeLayer = CAShapeLayer.init()
-//        shadeLayer.path = bezierPath.cgPath
-//        self.layer.mask = shadeLayer
     }
 
 }

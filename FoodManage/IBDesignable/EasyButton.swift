@@ -154,12 +154,10 @@ class EasyButton: UIButton {
 
     fileprivate func addCorner() {
         if isRounded {
-            let roundedLength = self.frame.size.width <= self.frame.size.height ? self.frame.size.width : self.frame.size.height
-            _cornerRadius = roundedLength/2
-            self.layer.cornerRadius = _cornerRadius
-        } else {
-            self.layer.cornerRadius = _cornerRadius
+            let roundedLength = self.frame.size.width<=self.frame.size.height ? self.frame.size.width : self.frame.size.height
+            cornerRadius = roundedLength/2
         }
+        self.layer.cornerRadius = cornerRadius
     }
 
 }

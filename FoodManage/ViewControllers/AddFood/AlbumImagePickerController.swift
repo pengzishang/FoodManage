@@ -1,24 +1,33 @@
 //
-//  AlbumViewController.swift
+//  AlbumImagePickerController.swift
 //  FoodManage
 //
-//  Created by pzs on 2018/11/4.
+//  Created by DeshPeng on 2018/11/5.
 //  Copyright © 2018 pzs. All rights reserved.
 //
 
 import UIKit
 import QMUIKit
 
-class AlbumViewController: QMUIAlbumViewController {
+class AlbumImagePickerController: QMUIImagePickerViewController {
 
-    static let unwindId = "AlbumViewControllerBack"
-    
     var imageAssets : [QMUIAsset]?
+    static let unwindId = "AlbumImagePickerControllerBack"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.albumViewControllerDelegate = self
+        self.imagePickerViewControllerDelegate = self
+        //        picker.maximumSelectImageCount = 1
+        self.allowsMultipleSelection = false
         // Do any additional setup after loading the view.
     }
+    
+    override func didInitialize() {
+        super.didInitialize()
+        self.wr_setNavBarTintColor(UIColor.black)
+    }
+    
+    
     
 
     /*
@@ -33,16 +42,7 @@ class AlbumViewController: QMUIAlbumViewController {
 
 }
 
-extension AlbumViewController :QMUIAlbumViewControllerDelegate {
-    func imagePickerViewController(for albumViewController: QMUIAlbumViewController!) -> QMUIImagePickerViewController! {
-        let picker = QMUIImagePickerViewController.init()
-        picker.imagePickerViewControllerDelegate = self
-        picker.maximumSelectImageCount = 1
-        picker.allowsMultipleSelection = true
-        return picker
-    }
-}
-extension AlbumViewController : QMUIImagePickerViewControllerDelegate {
+extension AlbumImagePickerController : QMUIImagePickerViewControllerDelegate {
     func imagePickerViewController(_ imagePickerViewController: QMUIImagePickerViewController!, didFinishPickingImageWithImagesAssetArray imagesAssetArray: NSMutableArray!) {
         QMUIImagePickerHelper.updateLastestAlbum(with: imagePickerViewController.assetsGroup, ablumContentType: .onlyPhoto, userIdentify: nil)
         imagesAssetArray.forEach { (asset) in
@@ -54,16 +54,13 @@ extension AlbumViewController : QMUIImagePickerViewControllerDelegate {
                 }
             })
         }
-        self.dismiss(animated: true) {
-            self.imageAssets =  imagesAssetArray as? [QMUIAsset]
-            self.performSegue(withIdentifier: AlbumViewController.unwindId, sender: nil)
-        }
+        self.imageAssets =  imagesAssetArray as? [QMUIAsset]
+        self.performSegue(withIdentifier: AlbumImagePickerController.unwindId, sender: nil)
     }
     
     func imagePickerPreviewViewController(for imagePickerViewController: QMUIImagePickerViewController!) -> QMUIImagePickerPreviewViewController! {
-        let picker = self.storyboard?.instantiateViewController(withIdentifier: "AlbumPreviewController") as! AlbumPreviewController
+        QMUIImagePickerHelper.updateLastestAlbum(with: imagePickerViewController.assetsGroup, ablumContentType: .onlyPhoto, userIdentify: nil)
+        let picker = AlbumPreviewController.init()
         return picker
     }
 }
-
-

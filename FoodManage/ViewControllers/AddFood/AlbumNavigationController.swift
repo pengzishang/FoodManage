@@ -1,31 +1,26 @@
 //
-//  AlbumPreviewController.swift
+//  AlbumNavigationController.swift
 //  FoodManage
 //
-//  Created by pzs on 2018/11/4.
+//  Created by DeshPeng on 2018/11/5.
 //  Copyright © 2018 pzs. All rights reserved.
 //
 
 import UIKit
 import QMUIKit
+import WRNavigationBar
 
-class AlbumPreviewController: QMUIImagePickerPreviewViewController {
+class AlbumNavigationController: QMUINavigationController {
 
-    static let unwindId = "backToAlbumPreviewController"
+    static let unwind = "AlbumNavigationControllerBack"
     open var imageAsset : QMUIAsset?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "预览"
+        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func didClickUse(_ sender: Any) {
-        self.dismiss(animated: true) {
-            self.imageAsset =  self.imagesAssetArray![Int(self.imagePreviewView!.currentImageIndex)] as? QMUIAsset
-            self.performSegue(withIdentifier: AlbumPreviewController.unwindId, sender: nil)
-        }
-    }
-    
+
     /*
     // MARK: - Navigation
 
@@ -38,6 +33,12 @@ class AlbumPreviewController: QMUIImagePickerPreviewViewController {
 
 }
 
-extension AlbumPreviewController : QMUIImagePickerPreviewViewControllerDelegate {
+extension AlbumNavigationController : QMUINavigationControllerAppearanceDelegate {
+    func shouldSetStatusBarStyleLight() -> Bool {
+        return false
+    }
     
+    func navigationBarTintColor() -> UIColor? {
+        return UIColor.black
+    }
 }
