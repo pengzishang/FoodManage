@@ -51,6 +51,11 @@ class DataManger: NSObject {
         return context
     }()
 
+    var currentInputName: String?
+    var currentSuggestName: String?
+    var currentImage: UIImage?
+    
+
     // 更新数据
     private func saveContext() {
         do {

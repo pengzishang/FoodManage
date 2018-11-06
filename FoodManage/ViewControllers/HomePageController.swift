@@ -18,21 +18,12 @@ class HomePageController: UIViewController {
     @IBOutlet var emptyMainView: UIView!
     @IBOutlet var emptyTableGesture: UITapGestureRecognizer!
     
-    lazy var addFoodVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddFoodController")
+    lazy var addFoodVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddFoodController") as! AddFoodController
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.showEmptyView(withText: "天哪,干干净净,难道冰箱里面没东西吗?", detailText: "", buttonTitle: "开始添加!", buttonAction: #selector(didBeginAdding(_:)))
-//        let image = UIImageView.init(image: UIImage.init(named: "basket"))
-////        1067:829
-//        image.qmui_sizeToFitKeepingImageAspectRatio(in: CGSize.init(width: self.view.frame.width/375*72, height: self.view.frame.width/375*72*829/1067))
-//        let btn = QMUIFillButton.init(fill: UIColor.blue, titleTextColor: UIColor.white)
-//        btn.setTitle("开始添加!", for: .normal)
-//
-//        self.showEmptyView()
-//        self.showEmptyView(with: UIImage.init(named: "basket"), text: "天哪,干干净净,难道冰箱里面没东西吗?", detailText: "", buttonTitle: "开始添加!", buttonAction: #selector(didBeginAdding(_:)))
 //        PushManager.share.addLocalNotification()
         // Do any additional setup after loading the view.
     }
@@ -49,7 +40,11 @@ class HomePageController: UIViewController {
         popupController.present(in: self, completion: nil)
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addFoodVC.isNext = false
+        addFoodVC.isNew = false
+    }
     
     /*
     // MARK: - Navigation
