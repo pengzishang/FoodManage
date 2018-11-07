@@ -16,13 +16,13 @@ class AddFoodController: QMUICommonViewController {
     lazy var addExpirationVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddExpirationController")
 
     @IBOutlet weak var activityView: NVActivityIndicatorView!
-    @IBOutlet weak var imageView: EasyImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var photoHeight: NSLayoutConstraint!
     @IBOutlet weak var photoWidth: NSLayoutConstraint!
-    @IBOutlet weak var takePhotoBtn: EasyButton!
-    @IBOutlet weak var confirmBtn: EasyButton!
-    @IBOutlet weak var changeNameBtn: EasyButton!
-    @IBOutlet weak var giveName: EasyButton!
+    @IBOutlet weak var takePhotoBtn: UIButton!
+    @IBOutlet weak var confirmBtn: UIButton!
+    @IBOutlet weak var changeNameBtn: UIButton!
+    @IBOutlet weak var giveName: UIButton!
 
     @IBOutlet weak var resultLab: UILabel!
     //两次后可更换图片
@@ -94,37 +94,56 @@ class AddFoodController: QMUICommonViewController {
         }
     }
     
-    @IBAction func didClickTakePhoto(_ sender: EasyButton) {
+    @IBAction func didClickTakePhoto(_ sender: UIButton) {
         self.popMethods()
     }
 
-    @IBAction func didClickConfirm(_ sender: EasyButton) {
+    @IBAction func didClickConfirm(_ sender: UIButton) {
         DataManger.share.currentInputName = self.testArray[self.resultIndex]
         DataManger.share.currentImage = self.imageView.image
         self.isNext = true
+        self.addExpirationVC.title = DataManger.share.currentInputName! + " 还能保存多久?"
         self.popupController?.push(self.addExpirationVC, animated: true)
     }
 
-    @IBAction func didClickChangeName(_ sender: EasyButton) {
+    @IBAction func didClickChangeName(_ sender: UIButton) {
         self.changeStatus(with: .change)
     }
 
-    @IBAction func didClickGiveName(_ sender: EasyButton) {
-        let alert = UIAlertController.init(title: "起个名字吧", message: "这个东西叫什么?", preferredStyle: .alert)
-        alert.addTextField { (_) in
-            //TODO:下一步
+    @IBAction func didClickGiveName(_ sender: UIButton) {
+        let alert = UIAlertController.init(title: "起个名字吧", message: "这个东西叫什么?", preferredStyle: .actionSheet)
+        let textField: TextField.Config = { textField in
+            textField.left(image: #imageLiteral(resourceName: "pen"), color: .black)
+            textField.leftViewPadding = 12
+            textField.becomeFirstResponder()
+            textField.borderWidth = 1
+            textField.cornerRadius = 8
+            textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+            textField.backgroundColor = nil
+            textField.textColor = .black
+            textField.placeholder = "名字"
+            textField.keyboardAppearance = .default
+            textField.keyboardType = .default
+            //textField.isSecureTextEntry = true
+            textField.returnKeyType = .done
+            textField.action { textField in
+                if let text = textField.text {
+                    DataManger.share.currentInputName = text
+                }
+            }
         }
+        alert.addOneTextField(configuration: textField)
+        
         alert.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (_) in
-            if let text = alert.textFields?.first?.text {
-                DataManger.share.currentInputName = text
+            if (DataManger.share.currentInputName != nil) {
                 DataManger.share.currentImage = self.imageView.image
                 self.isNext = true
+                self.addExpirationVC.title = DataManger.share.currentInputName! + " 还能保存多久?"
                 self.popupController?.push(self.addExpirationVC, animated: true)
             }
-            //TODO:下一步
         }))
         alert.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (_) in
-
+            DataManger.share.currentInputName = nil
         }))
         self.present(alert, animated: true) {
 

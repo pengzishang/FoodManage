@@ -22,4 +22,6 @@ target 'FoodManage' do
     pod 'fluid-slider'
     pod 'STPopup'
     pod 'QMUIKit'
+    pod 'VegaScrollFlowLayout'
+    
 end

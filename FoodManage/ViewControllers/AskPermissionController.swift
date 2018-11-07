@@ -15,7 +15,7 @@ class AskPermissionController: UIViewController {
     @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var leftSubTitle: UILabel!
     @IBOutlet weak var demoView: UIView!
-    @IBOutlet weak var activitedAsking: EasyButton!
+    @IBOutlet weak var activitedAsking: UIButton!
     @IBOutlet weak var laterAsking: UIButton!
     
     var player = AVPlayer.init(url: Bundle.main.url(forResource: "Demo", withExtension: "mov")!)

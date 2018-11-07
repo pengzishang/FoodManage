@@ -12,11 +12,13 @@ import WRNavigationBar
 import SnapKit
 import STPopup
 import QMUIKit
+import VegaScrollFlowLayout
 
 class HomePageController: UIViewController {
     
     @IBOutlet var emptyMainView: UIView!
     @IBOutlet var emptyTableGesture: UITapGestureRecognizer!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     lazy var addFoodVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddFoodController") as! AddFoodController
     
@@ -24,9 +26,17 @@ class HomePageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let layout = VegaScrollFlowLayout()
+        
+        layout.minimumLineSpacing = 00
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
+        collectionView.collectionViewLayout = layout
+
 //        PushManager.share.addLocalNotification()
         // Do any additional setup after loading the view.
     }
+    
     
     @IBAction func didBeginAdding(_ sender: Any) {
         let popupController  = STPopupController.init(rootViewController: addFoodVC)
@@ -58,18 +68,18 @@ class HomePageController: UIViewController {
 
 }
 
-extension HomePageController : UITableViewDataSource,UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension HomePageController : UICollectionViewDataSource,UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
         cell.data()
         return cell
     }
-    
 }
+
 
 extension HomePageController : DZNEmptyDataSetSource ,DZNEmptyDataSetDelegate{
 
@@ -83,10 +93,13 @@ extension HomePageController : DZNEmptyDataSetSource ,DZNEmptyDataSetDelegate{
 }
 
 
-class HomeCell: UITableViewCell {
+class HomeCell: UICollectionViewCell {
     @IBOutlet weak var progressView: UIView!
     
     func data() {
+        progressView.subviews.forEach { (view) in
+            view.removeFromSuperview()
+        }
         let progress = LDProgressView.init()
         progress.animate = true
         progress.color = UIColor.red

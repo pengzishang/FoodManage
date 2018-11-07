@@ -10,11 +10,17 @@ import UIKit
 import STPopup
 import fluid_slider
 import QMUIKit
+import IBAnimatable
 
 class AddExpirationController: UIViewController {
     
     @IBOutlet weak var sliderView: UIView!
     @IBOutlet var detailViews: [UIView]!
+    var startDate :Date?
+    var endDate :Date?
+    @IBOutlet weak var startBtn: AnimatableButton!
+    @IBOutlet weak var endBtn: AnimatableButton!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,9 +44,7 @@ class AddExpirationController: UIViewController {
         slider.setMinimumLabelAttributedText(attrStr1)
         slider.setMaximumLabelAttributedText(attrStr2)
         slider.fraction = 0.33
-        slider.shadowOffset = CGSize(width: 0, height: 5)
         slider.shadowBlur = 5
-        slider.shadowColor = UIColor(white: 0, alpha: 0.1)
         slider.contentViewColor = UIColor.orange
         slider.valueViewColor = .white
         self.sliderView.addSubview(slider)
@@ -52,17 +56,40 @@ class AddExpirationController: UIViewController {
     }
     @IBAction func didSwitchDetail(_ sender: UISwitch) {
         self.detailViews.forEach { $0.isHidden = !sender.isOn}
+        var btnHeight = (self.view.frame.width - 60 - 40)
+        btnHeight = btnHeight * 3/26
         if sender.isOn {
-            self.contentSizeInPopup = CGSize.init(width: self.view.frame.width, height: 360)
+            self.contentSizeInPopup = CGSize.init(width: self.view.frame.width, height: btnHeight + 300)
         } else {
-            var btnHeight = (self.view.frame.width - 60 - 40)
-            btnHeight = btnHeight * 3/26
             self.contentSizeInPopup = CGSize.init(width: self.view.frame.width, height: btnHeight + 120)
         }
     }
     
+    @IBAction func didClickProductTime(_ sender: Any) {
+        let dialog = DatePickerDialog.init(buttonColor: .black, showCancelButton: true)
+        dialog.show("生产时间", doneButtonTitle: "完成", cancelButtonTitle: "取消", defaultDate: self.endDate ?? self.startDate ?? Date.init(), minimumDate: self.startDate ?? Date.init(), maximumDate: nil, datePickerMode: .date) { (date) in
+            if date != nil {
+                self.startDate = date
+                self.startBtn.setTitle(date!.toFormat("yyyy年 MM月 dd日 生产"), for: .normal)
+            }
+        }
+    }
+    
+    @IBAction func didClickExpiredTime(_ sender: Any) {
+        let dialog = DatePickerDialog.init(buttonColor: .black, showCancelButton: true)
+        dialog.show("到期时间", doneButtonTitle: "完成", cancelButtonTitle: "取消", defaultDate: self.endDate ?? self.startDate ?? Date.init(), minimumDate: self.startDate ?? Date.init(), maximumDate: nil, datePickerMode: .date) { (date) in
+            if date != nil {
+                self.endDate = date
+                self.endBtn.setTitle(date!.toFormat("yyyy年 MM月 dd日 到期"), for: .normal)
+            }
+        }
+    }
+    
+    
     @objc fileprivate func didClickClose() {
-        print("222")
+        self.popupController?.dismiss(completion: {
+            //TODO:储存动作
+        })
     }
     
     private func text(with percent:CGFloat) -> NSAttributedString {
