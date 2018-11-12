@@ -21,7 +21,7 @@ class HomePageController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     lazy var addFoodVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddFoodController") as! AddFoodController
-    
+    var dataList = DataManger.share.fetchAll()
     
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class HomePageController: UIViewController {
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         collectionView.collectionViewLayout = layout
-
+        
 //        PushManager.share.addLocalNotification()
         // Do any additional setup after loading the view.
     }
@@ -70,12 +70,12 @@ class HomePageController: UIViewController {
 
 extension HomePageController : UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return dataList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        cell.data()
+        cell.data(with: dataList[indexPath.row])
         return cell
     }
 }
@@ -95,26 +95,31 @@ extension HomePageController : DZNEmptyDataSetSource ,DZNEmptyDataSetDelegate{
 
 class HomeCell: UICollectionViewCell {
     @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
+    lazy var progress :LDProgressView = { [unowned self] in
+        $0.animate = true
+        $0.color = UIColor.red
+        $0.flat = true
+        $0.type = .stripes
+        $0.progressInset = 1
+        $0.background = UIColor.clear
+        $0.showBackgroundInnerShadow = false
+        $0.animateDirection = .backward;
+        $0.borderRadius = 3
+        return $0
+    }(LDProgressView())
     
-    func data() {
+    
+    func data(with model:FoodDateModel) {
         progressView.subviews.forEach { (view) in
             view.removeFromSuperview()
         }
-        let progress = LDProgressView.init()
-        progress.animate = true
-        progress.color = UIColor.red
         progress.progress = 0.4
-        progress.flat = true
-        progress.type = .stripes
-        progress.progressInset = 1
-        progress.background = UIColor.clear
-        progress.showBackgroundInnerShadow = false
-        progress.animateDirection = .backward;
-        progress.borderRadius = 3
         self.progressView.addSubview(progress)
         progress.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+//        imageView.image = UIImage.init(data: model.imageData!)
     }
     
 

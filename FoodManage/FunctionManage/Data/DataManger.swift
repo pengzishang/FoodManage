@@ -12,6 +12,10 @@ import CoreData
 class DataManger: NSObject {
 
     static let share = DataManger()
+    
+    override init() {
+        super.init()
+    }
 
     lazy var managedObjectModel: NSManagedObjectModel = {
         let modelURL = Bundle.main.url(forResource: "FoodDataModel", withExtension: "momd")
@@ -55,6 +59,7 @@ class DataManger: NSObject {
     var currentSuggestName: String?
     var currentImage: UIImage?
     
+    var currentModel: FoodDateModel
 
     // 更新数据
     private func saveContext() {
@@ -80,7 +85,9 @@ class DataManger: NSObject {
         saveContext()
     }
 
-    public func insertFood(_ data: FoodDateModel) {
+    public func insertFood() {
+        let model = NSEntityDescription.insertNewObject(forEntityName: "FoodDateModel", into: context) as! FoodDateModel
+        model.importData(with: self.currentModel)
         saveContext()
     }
 
@@ -97,13 +104,18 @@ class DataManger: NSObject {
 }
 
 extension FoodDateModel {
-    func importData(with data: FoodDateModel) {
+    func importData(with data: FoodDateModel?) {
+        guard let data = data else {
+            return
+        }
         self.duration = data.duration
-        self.imageURL = data.imageURL
+        self.imageData = data.imageData
         self.importDate = data.importDate
         self.inputName = data.inputName
         self.isExpired = data.isExpired
         self.position = data.position
         self.suggestName = data.suggestName
+        self.productDate = data.productDate
+        self.expireDate = data.expireDate
     }
 }

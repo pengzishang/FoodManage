@@ -275,9 +275,11 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                                             <real key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isShadowed" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                                             <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="0.0" height="2"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -312,6 +314,7 @@
                                         </constraints>
                                         <size key="customSize" width="300" height="100"/>
                                         <connections>
+                                            <outlet property="imageView" destination="q50-J4-L1X" id="JPG-NI-C3m"/>
                                             <outlet property="progressView" destination="UOY-UJ-mm7" id="i0i-EC-D2G"/>
                                         </connections>
                                     </collectionViewCell>
@@ -335,7 +338,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d2y-6i-mWP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9Yq-uB-BWn"/>
+                    <navigationItem key="navigationItem" id="9Yq-uB-BWn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wPz-KJ-Sd9">
+                            <connections>
+                                <action selector="didBeginAdding:" destination="Bmz-jD-tts" id="CG6-JO-UO1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="pQE-Vu-JRa" id="PdJ-ju-jy6"/>
                         <outlet property="emptyMainView" destination="8C5-0v-LQG" id="uFY-ee-E6p"/>

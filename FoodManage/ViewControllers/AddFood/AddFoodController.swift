@@ -29,6 +29,7 @@ class AddFoodController: QMUICommonViewController {
 
     var isNew = false
     var isNext = false
+    var isCustomName = false
     let photoMargin: CGFloat = 40
     let viewMargin: CGFloat = 40
 
@@ -99,8 +100,9 @@ class AddFoodController: QMUICommonViewController {
     }
 
     @IBAction func didClickConfirm(_ sender: UIButton) {
-        DataManger.share.currentInputName = self.testArray[self.resultIndex]
-        DataManger.share.currentImage = self.imageView.image
+        DataManger.share.currentModel.imageData = self.imageView.image?.jpegData(compressionQuality: 1)
+        DataManger.share.currentModel.suggestName = self.testArray.first
+        DataManger.share.currentInputName = self.testArray.first
         self.isNext = true
         self.addExpirationVC.title = DataManger.share.currentInputName! + " 还能保存多久?"
         self.popupController?.push(self.addExpirationVC, animated: true)
@@ -136,7 +138,9 @@ class AddFoodController: QMUICommonViewController {
         
         alert.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (_) in
             if (DataManger.share.currentInputName != nil) {
-                DataManger.share.currentImage = self.imageView.image
+                DataManger.share.currentModel.imageData = self.imageView.image?.jpegData(compressionQuality: 1)
+                DataManger.share.currentModel.suggestName = self.testArray.first
+                DataManger.share.currentModel.inputName = DataManger.share.currentInputName
                 self.isNext = true
                 self.addExpirationVC.title = DataManger.share.currentInputName! + " 还能保存多久?"
                 self.popupController?.push(self.addExpirationVC, animated: true)
