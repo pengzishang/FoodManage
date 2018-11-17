@@ -100,8 +100,10 @@ class AddFoodController: QMUICommonViewController {
     }
 
     @IBAction func didClickConfirm(_ sender: UIButton) {
-        DataManger.share.currentModel.imageData = self.imageView.image?.jpegData(compressionQuality: 1)
-        DataManger.share.currentModel.suggestName = self.testArray.first
+        //建立
+        DataManger.share.setupNew()
+        DataManger.share.currentModel!.imageData = self.imageView.image?.jpegData(compressionQuality: 1)
+        DataManger.share.currentModel!.suggestName = self.testArray.first
         DataManger.share.currentInputName = self.testArray.first
         self.isNext = true
         self.addExpirationVC.title = DataManger.share.currentInputName! + " 还能保存多久?"
@@ -137,10 +139,11 @@ class AddFoodController: QMUICommonViewController {
         alert.addOneTextField(configuration: textField)
         
         alert.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (_) in
+            //建立
             if (DataManger.share.currentInputName != nil) {
-                DataManger.share.currentModel.imageData = self.imageView.image?.jpegData(compressionQuality: 1)
-                DataManger.share.currentModel.suggestName = self.testArray.first
-                DataManger.share.currentModel.inputName = DataManger.share.currentInputName
+                DataManger.share.currentModel!.imageData = self.imageView.image?.jpegData(compressionQuality: 1)
+                DataManger.share.currentModel!.suggestName = self.testArray.first
+                DataManger.share.currentModel!.inputName = DataManger.share.currentInputName
                 self.isNext = true
                 self.addExpirationVC.title = DataManger.share.currentInputName! + " 还能保存多久?"
                 self.popupController?.push(self.addExpirationVC, animated: true)

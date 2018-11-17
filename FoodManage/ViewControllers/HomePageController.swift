@@ -13,6 +13,8 @@ import SnapKit
 import STPopup
 import QMUIKit
 import VegaScrollFlowLayout
+import SwipeCellKit
+
 
 class HomePageController: UIViewController {
     
@@ -27,11 +29,19 @@ class HomePageController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = VegaScrollFlowLayout()
-        
         layout.minimumLineSpacing = 00
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 120)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         collectionView.collectionViewLayout = layout
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if let cell = self.collectionView.visibleCells.first as? HomeCell{
+                cell.showSwipe(orientation: .right)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    cell.hideSwipe(animated: true)
+                })
+            }
+        }
+
         
 //        PushManager.share.addLocalNotification()
         // Do any additional setup after loading the view.
@@ -54,6 +64,12 @@ class HomePageController: UIViewController {
         super.viewWillAppear(animated)
         addFoodVC.isNext = false
         addFoodVC.isNew = false
+        if dataList.count > 0 {
+            collectionView.removeGestureRecognizer(emptyTableGesture)
+        } else {
+            collectionView.addGestureRecognizer(emptyTableGesture)
+        }
+        collectionView.reloadData()
     }
     
     /*
@@ -78,6 +94,44 @@ extension HomePageController : UICollectionViewDataSource,UICollectionViewDelega
         cell.data(with: dataList[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let cell = collectionView.cellForItem(at: indexPath) as! HomeCell
+//        cell.showSwipe(orientation: .right, animated: true) { (_) in
+//
+//        }
+        cell.setSwipeOffset(10, animated: true) { (_) in
+            
+        }
+        
+    }
+}
+
+extension  HomeCell: SwipeCollectionViewCellDelegate {
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+        }
+        
+        // customize the action appearance
+        deleteAction.image = #imageLiteral(resourceName: "Trash-circle")
+        deleteAction.backgroundColor = .white
+        deleteAction.textColor = .red
+        return [deleteAction]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = orientation == .left ? .selection : .destructive
+        options.transitionStyle = .border
+        
+        options.buttonSpacing = 4
+        options.backgroundColor = #colorLiteral(red: 0.9467939734, green: 0.9468161464, blue: 0.9468042254, alpha: 1)
+        
+        return options
+    }
 }
 
 
@@ -93,9 +147,14 @@ extension HomePageController : DZNEmptyDataSetSource ,DZNEmptyDataSetDelegate{
 }
 
 
-class HomeCell: UICollectionViewCell {
+class HomeCell: SwipeCollectionViewCell {
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var mainTitle: UILabel!
+    @IBOutlet weak var endDay: UILabel!
+    @IBOutlet weak var during: UILabel!
+    
+    
     lazy var progress :LDProgressView = { [unowned self] in
         $0.animate = true
         $0.color = UIColor.red
@@ -105,22 +164,43 @@ class HomeCell: UICollectionViewCell {
         $0.background = UIColor.clear
         $0.showBackgroundInnerShadow = false
         $0.animateDirection = .backward;
-        $0.borderRadius = 3
+        $0.borderRadius = 2
+        $0.outerStrokeWidth = 0
+        $0.showStroke = false
         return $0
     }(LDProgressView())
     
     
     func data(with model:FoodDateModel) {
+        self.delegate = self
+        
         progressView.subviews.forEach { (view) in
             view.removeFromSuperview()
         }
-        progress.progress = 0.4
+        
         self.progressView.addSubview(progress)
         progress.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-//        imageView.image = UIImage.init(data: model.imageData!)
+        imageView.image = UIImage.init(data: model.imageData!)
+        if model.inputName != nil {
+            mainTitle.text = model.inputName
+        } else {
+            mainTitle.text = model.suggestName
+        }
+        
+        progress.progress = 0.4
+        if model.productDate == nil || model.expireDate == nil {
+            endDay.text = model.importDate?.addingTimeInterval(model.duration).toFormat("yyyy年MM月dd日")
+            during.text = model.importDate?.addingTimeInterval(model.duration).timeIntervalSinceNow.toIntervalString()
+            
+        } else {
+            endDay.text = model.expireDate?.toFormat("yyyy年MM月dd日")
+            during.text = model.expireDate?.dateComponents.fromNow.toFormat("yyyy年MM月dd日")
+        }
+        
+        
     }
     
-
 }
+

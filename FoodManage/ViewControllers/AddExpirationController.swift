@@ -90,11 +90,11 @@ class AddExpirationController: UIViewController {
 
     @objc fileprivate func didClickClose() {
         self.popupController?.dismiss(completion: {
-            DataManger.share.currentModel.expireDate = self.endDate
-            DataManger.share.currentModel.productDate = self.startDate
-            DataManger.share.currentModel.duration = self.time(with: self.slider.fraction)
-            DataManger.share.currentModel.importDate = Date.init()
-            DataManger.share.currentModel.isExpired = false
+            DataManger.share.currentModel!.expireDate = self.endDate
+            DataManger.share.currentModel!.productDate = self.startDate
+            DataManger.share.currentModel!.duration = self.time(with: self.slider.fraction)
+            DataManger.share.currentModel!.importDate = Date.init()
+            DataManger.share.currentModel!.isExpired = false
             DataManger.share.insertFood()
             //TODO:储存动作
 

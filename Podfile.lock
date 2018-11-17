@@ -291,6 +291,7 @@ PODS:
   - SnapKit (4.2.0)
   - STPopup (1.8.3)
   - SwiftDate (5.0.13)
+  - SwipeCellKit (2.5.0)
   - VegaScrollFlowLayout (1.1)
   - WRNavigationBar (1.2.0)
   - YTKNetwork (2.0.4):
@@ -310,6 +311,7 @@ DEPENDENCIES:
   - SnapKit
   - STPopup
   - SwiftDate
+  - SwipeCellKit
   - VegaScrollFlowLayout
   - WRNavigationBar
   - YTKNetwork
@@ -331,6 +333,7 @@ SPEC REPOS:
     - SnapKit
     - STPopup
     - SwiftDate
+    - SwipeCellKit
     - VegaScrollFlowLayout
     - WRNavigationBar
     - YTKNetwork
@@ -351,10 +354,11 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   STPopup: da1167250a01584af7bcccb898653185f223ec46
   SwiftDate: f4aea5fa9dee812485f34041121a4cbde01b0dee
+  SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 74b2ee26c9675d59193a5e59840940c9e341fc0b
+PODFILE CHECKSUM: 607529411127a739f63f3c30189e5e37a093cb3e
 
 COCOAPODS: 1.6.0.beta.2
