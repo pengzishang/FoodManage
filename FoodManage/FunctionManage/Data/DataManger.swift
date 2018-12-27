@@ -8,11 +8,14 @@
 
 import UIKit
 import CoreData
+import SwiftDate
 
 class DataManger: NSObject {
 
     static let share = DataManger()
 
+    static let DataMangerDidSaveData = Notification.Name(rawValue: "DataMangerDidSaveData")
+    
     lazy var managedObjectModel: NSManagedObjectModel = {
         let modelURL = Bundle.main.url(forResource: "FoodDataModel", withExtension: "momd")
         let managedObjectModel = NSManagedObjectModel.init(contentsOf: modelURL!)
@@ -58,16 +61,21 @@ class DataManger: NSObject {
     var currentModel: FoodDateModel?
 
     // 更新数据
-    private func saveContext() {
+    private func saveContext() -> Bool{
         do {
             try context.save()
+            NotificationCenter.default.post(name: DataManger.DataMangerDidSaveData, object: self.currentModel, userInfo: nil)
+            self.currentModel = nil
+            return true
         } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//            let nserror = error as NSError
+            return false
+//            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+        
     }
 
-    func deleteWith(importDate: TimeInterval) {
+    func deleteWith(importDate: TimeInterval) -> Bool{
         let fetchRequest: NSFetchRequest = FoodDateModel.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "importDate == %@", importDate)
         do {
@@ -76,14 +84,14 @@ class DataManger: NSObject {
                 context.delete(data)
             }
         } catch {
-            fatalError()
+//            fatalError()
+            return false
         }
-        saveContext()
+        return saveContext()
     }
 
-    public func insertFood() {
-        saveContext()
-        self.currentModel = nil
+    public func insertFood() -> Bool {
+         return saveContext()
     }
 
     public func setupNew()  {
@@ -93,7 +101,14 @@ class DataManger: NSObject {
     public func fetchAll() -> [FoodDateModel] {
         let fetchRequest: NSFetchRequest = FoodDateModel.fetchRequest()
         do {
-            let result = try context.fetch(fetchRequest)
+            var result = try context.fetch(fetchRequest)
+            result.sort {
+                if let date2 = $1.expireDate , let date1 = $0.expireDate {
+                    return date1 <= date2 + 1.seconds
+                } else {
+                    return true
+                }
+            }
             return result
         } catch {
             fatalError()

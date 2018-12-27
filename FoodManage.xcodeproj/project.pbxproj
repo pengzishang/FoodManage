@@ -93,6 +93,7 @@
 		6463619C218C5FEC007AE054 /* AddExpirationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpirationController.swift; sourceTree = "<group>"; };
 		646361A121902570007AE054 /* AlbumNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumNavigationController.swift; sourceTree = "<group>"; };
 		646361A321902896007AE054 /* AlbumImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumImagePickerController.swift; sourceTree = "<group>"; };
+		649DB7AE21D4D800001906F3 /* FoodDataMode20181227.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodDataMode20181227.xcdatamodel; sourceTree = "<group>"; };
 		64BD515621807B0600A0EB07 /* FoodManage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodManage-Bridging-Header.h"; sourceTree = "<group>"; };
 		64BD515721807B0700A0EB07 /* UIViewController+ClassNamePrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ClassNamePrint.h"; sourceTree = "<group>"; };
 		64BD515821807B0700A0EB07 /* UIViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Refresh.m"; sourceTree = "<group>"; };
@@ -776,7 +777,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5646353WJR;
 				INFOPLIST_FILE = FoodManage/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -800,7 +801,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5646353WJR;
 				INFOPLIST_FILE = FoodManage/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -849,9 +850,10 @@
 		6410B49F21885B4F00D35C6F /* FoodDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				649DB7AE21D4D800001906F3 /* FoodDataMode20181227.xcdatamodel */,
 				6410B4A021885B4F00D35C6F /* FoodDataModel.xcdatamodel */,
 			);
-			currentVersion = 6410B4A021885B4F00D35C6F /* FoodDataModel.xcdatamodel */;
+			currentVersion = 649DB7AE21D4D800001906F3 /* FoodDataMode20181227.xcdatamodel */;
 			path = FoodDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

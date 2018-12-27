@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.performSegue(withIdentifier: "TabBarController2AskPermissionController", sender: nil)
                 }
-            } else if let time = PushManager.share.firstOpenTime, (time + 2.minutes) <= Date() {
+            } else if let time = PushManager.share.firstOpenTime, (time + 2.hours) <= Date() {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.performSegue(withIdentifier: "TabBarController2AskPermissionController", sender: nil)
                 }

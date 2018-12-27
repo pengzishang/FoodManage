@@ -30,10 +30,10 @@ class AskPermissionController: UIViewController {
             UIView.animate(withDuration: 2, animations: {
                 self.demoView.alpha = 1
             }, completion: { (_) in
-                UIView.animate(withDuration: 2, animations: {
+                UIView.animate(withDuration: 1, animations: {
                     self.activitedAsking.alpha = 1
                 }, completion: { (_) in
-                    UIView.animate(withDuration: 2, animations: {
+                    UIView.animate(withDuration: 1, animations: {
                         self.laterAsking.alpha = 1
                     })
                 })
@@ -56,6 +56,7 @@ class AskPermissionController: UIViewController {
     
     @IBAction func didClickCancel(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func didClickActivited(_ sender: Any) {

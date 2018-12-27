@@ -20,6 +20,8 @@ class AddExpirationController: UIViewController {
     var endDate: Date?
     @IBOutlet weak var startBtn: AnimatableButton!
     @IBOutlet weak var endBtn: AnimatableButton!
+    @IBOutlet weak var detailSwitch: UISwitch!
+    
     
     fileprivate lazy var slider:Slider = { [unowned self] in
         $0.attributedTextForFraction = { fraction in
@@ -89,16 +91,22 @@ class AddExpirationController: UIViewController {
     }
 
     @objc fileprivate func didClickClose() {
-        self.popupController?.dismiss(completion: {
-            DataManger.share.currentModel!.expireDate = self.endDate
-            DataManger.share.currentModel!.productDate = self.startDate
-            DataManger.share.currentModel!.duration = self.time(with: self.slider.fraction)
+            DataManger.share.currentModel!.expireDate = self.endDate ?? Date() + self.time(with: self.slider.fraction)
+            DataManger.share.currentModel!.productDate = self.startDate ?? Date()
+            if !self.detailSwitch.isOn {
+                DataManger.share.currentModel!.duration = self.time(with: self.slider.fraction)
+                DataManger.share.currentModel!.expireDate = Date() + self.time(with: self.slider.fraction)
+                DataManger.share.currentModel!.productDate = Date()
+            } else {
+                DataManger.share.currentModel!.expireDate = self.endDate! + self.time(with: self.slider.fraction)
+                DataManger.share.currentModel!.productDate = self.startDate 
+                DataManger.share.currentModel!.duration = (self.endDate?.timeIntervalSince1970)! - (self.startDate?.timeIntervalSince1970)!
+            }
+            
             DataManger.share.currentModel!.importDate = Date.init()
             DataManger.share.currentModel!.isExpired = false
             DataManger.share.insertFood()
-            //TODO:储存动作
-
-        })
+        self.popupController?.dismiss()
     }
 
     fileprivate func text(with percent: CGFloat) -> NSAttributedString {

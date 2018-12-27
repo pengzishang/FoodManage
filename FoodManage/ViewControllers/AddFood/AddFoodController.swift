@@ -140,7 +140,9 @@ class AddFoodController: QMUICommonViewController {
         
         alert.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (_) in
             //建立
+            DataManger.share.setupNew()
             if (DataManger.share.currentInputName != nil) {
+                //TODO
                 DataManger.share.currentModel!.imageData = self.imageView.image?.jpegData(compressionQuality: 1)
                 DataManger.share.currentModel!.suggestName = self.testArray.first
                 DataManger.share.currentModel!.inputName = DataManger.share.currentInputName

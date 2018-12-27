@@ -29,7 +29,8 @@ class AlbumPreviewController: QMUIImagePickerPreviewViewController {
     override func didInitialize() {
         super.didInitialize()
         setNeedsStatusBarAppearanceUpdate()
-        confirmBtn.qmui_outsideEdge = UIEdgeInsets.init(top: -6, left: -6, bottom: -6, right: -6)
+        confirmBtn.qmui_outsideEdge = UIEdgeInsets.init(top: -6 + self.additionalSafeAreaInsets.top, left: -6, bottom: -6, right: -6)
+
         confirmBtn.setTitle("就这张了!", for: .normal)
         confirmBtn.addTarget(self, action: #selector(didClickUse(_:)), for: .touchUpInside)
         confirmBtn.setTitleColor(self.toolBarTintColor, for: .normal)
