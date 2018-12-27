@@ -1,9 +1,16 @@
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2018 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
 //
 //  QMUINavigationController.h
 //  qmui
 //
 //  Created by QMUI Team on 14-6-24.
-//  Copyright (c) 2014年 QMUI Team. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -105,7 +112,8 @@
 
 /// 是否需要将状态栏改为浅色文字，对于 QMUICommonViewController 子类，返回值默认为宏 StatusbarStyleLightInitially 的值，对于 UIViewController，不实现该方法则视为返回 NO。
 /// @warning 需在项目的 Info.plist 文件内设置字段 “View controller-based status bar appearance” 的值为 NO 才能生效，如果不设置，或者值为 YES，则请使用系统提供的 - preferredStatusBarStyle 方法
-- (BOOL)shouldSetStatusBarStyleLight;
+/// 该方法已废弃，请使用系统提供的 - preferredStatusBarStyle 方法。
+- (BOOL)shouldSetStatusBarStyleLight DEPRECATED_ATTRIBUTE;
 
 /// 设置 titleView 的 tintColor
 - (nullable UIColor *)titleViewTintColor;
@@ -144,29 +152,14 @@
 - (BOOL)shouldCustomizeNavigationBarTransitionIfHideable;
 
 /**
- *  设置当前导航栏是否需要使用自定义的 push/pop transition 效果，默认返回NO。<br/>
- *  因为系统的UINavigationController只有一个navBar，所以会导致在切换controller的时候，如果两个controller的navBar状态不一致（包括backgroundImage、shadowImage、barTintColor等等），就会导致在刚要切换的瞬间，navBar的状态都立马变成下一个controller所设置的样式了，为了解决这种情况，QMUI给出了一个方案，有四个方法可以决定你在转场的时候要不要使用自定义的navBar来模仿真实的navBar。具体方法如下：
+ *  设置导航栏转场的时候是否需要使用自定义的 push / pop transition 效果。<br/>
+ *  如果前后两个界面 controller 返回的 key 不一致，那么则说明需要自定义。<br/>
+ *  不实现这个方法，或者实现了但返回 nil，都视为希望使用默认样式。<br/>
+ *  @warning 四个老接口 shouldCustomNavigationBarTransitionxxx 已经废弃不建议使用，不过还是会支持，建议都是用新接口
  *  @see UINavigationController+NavigationBarTransition.h
+ *  @see 配置表有开关 AutomaticCustomNavigationBarTransitionStyle 支持自动判断样式，无需实现这个方法
  */
-- (BOOL)shouldCustomNavigationBarTransitionWhenPushAppearing;
-
-/**
- *  同上
- *  @see UINavigationController+NavigationBarTransition.h
- */
-- (BOOL)shouldCustomNavigationBarTransitionWhenPushDisappearing;
-
-/**
- *  同上
- *  @see UINavigationController+NavigationBarTransition.h
- */
-- (BOOL)shouldCustomNavigationBarTransitionWhenPopAppearing;
-
-/**
- *  同上
- *  @see UINavigationController+NavigationBarTransition.h
- */
-- (BOOL)shouldCustomNavigationBarTransitionWhenPopDisappearing;
+- (nullable NSString *)customNavigationBarTransitionKey;
 
 /**
  *  自定义navBar效果过程中UINavigationController的containerView的背景色

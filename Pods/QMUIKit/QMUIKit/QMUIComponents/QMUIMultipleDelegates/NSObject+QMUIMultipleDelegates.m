@@ -1,9 +1,16 @@
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2018 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
 //
 //  NSObject+MultipleDelegates.m
 //  QMUIKit
 //
-//  Created by MoLice on 2018/3/27.
-//  Copyright © 2018年 QMUI Team. All rights reserved.
+//  Created by QMUI Team on 2018/3/27.
 //
 
 #import "NSObject+QMUIMultipleDelegates.h"
@@ -68,10 +75,14 @@ static char kAssociatedObjectKey_qmuiDelegates;
         QMUIPropertyDescriptor *property = [QMUIPropertyDescriptor descriptorWithProperty:prop];
         if (property.isStrong) {
             // strong property
-            self.qmuimd_delegates[delegateGetterKey] = [QMUIMultipleDelegates strongDelegates];
+            QMUIMultipleDelegates *strongDelegates = [QMUIMultipleDelegates strongDelegates];
+            strongDelegates.parentObject = self;
+            self.qmuimd_delegates[delegateGetterKey] = strongDelegates;
         } else {
             // weak property
-            self.qmuimd_delegates[delegateGetterKey] = [QMUIMultipleDelegates weakDelegates];
+            QMUIMultipleDelegates *weakDelegates = [QMUIMultipleDelegates weakDelegates];
+            weakDelegates.parentObject = self;
+            self.qmuimd_delegates[delegateGetterKey] = weakDelegates;
         }
     }
     
@@ -111,7 +122,7 @@ static char kAssociatedObjectKey_qmuiDelegates;
             }
             
             // 将类似 textView.delegate = textView 的情况标志起来，避免产生循环调用 https://github.com/QMUI/QMUI_iOS/issues/346
-            selfObject.qmui_delegatesSelf = [delegates.delegates qmui_containsPointer:(__bridge void * _Nullable)(aDelegate)];
+            selfObject.qmui_delegatesSelf = [delegates.delegates qmui_containsPointer:(__bridge void * _Nullable)(selfObject)];
             
             originSelectorIMP(selfObject, originDelegateSetter, nil);// 先置为 nil 再设置 delegates，从而避免这个问题 https://github.com/QMUI/QMUI_iOS/issues/305
             originSelectorIMP(selfObject, originDelegateSetter, delegates);// 不管外面将什么 object 传给 setDelegate:，最终实际上传进去的都是 QMUIMultipleDelegates 容器

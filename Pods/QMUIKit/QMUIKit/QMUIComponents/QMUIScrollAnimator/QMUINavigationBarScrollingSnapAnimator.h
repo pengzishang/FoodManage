@@ -1,9 +1,16 @@
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2018 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
 //
 //  QMUINavigationBarScrollingSnapAnimator.h
 //  QMUIKit
 //
-//  Created by MoLice on 2018/S/30.
-//  Copyright © 2018 QMUI Team. All rights reserved.
+//  Created by QMUI Team on 2018/S/30.
 //
 
 #import "QMUIScrollAnimator.h"
@@ -47,6 +54,15 @@ NS_ASSUME_NONNULL_BEGIN
  是否已经过了临界点（也即 offsetYToStartAnimation）
  */
 @property(nonatomic, assign, readonly) BOOL offsetYReached;
+
+/**
+ 如果为 NO，则当 offsetYReached 的值不再变化（例如 YES 后继续往下滚动，或者 NO 后继续往上滚动）时，就不会再触发动画，从而提升性能。
+ 
+ 如果为 YES，则任何时候只要有滚动产生，动画就会被触发，适合运用到类似 Plain Style 的 UITableView 里在滚动时也要适配停靠的 sectionHeader 的场景（因为需要不断计算当前正在停靠的 sectionHeader 是哪一个）。
+ 
+ 默认为 NO
+ */
+@property(nonatomic, assign) BOOL continuous;
 
 @end
 
