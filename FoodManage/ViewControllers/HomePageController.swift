@@ -129,15 +129,15 @@ extension HomePageController: UICollectionViewDataSource, UICollectionViewDelega
 extension HomePageController : HomeCellDelegate {
     func didClickDeleteWith(indexPath: IndexPath) -> Bool {
         let dataModel = self.dataList[indexPath.row]
-        if let time = dataModel.importDate?.timeIntervalSince1970 {
-            if DataManger.share.deleteWith(importDate: time) {
-                self.reloadCollectionView()
-//                self.collectionView.deleteItems(at: [indexPath])
-            } else {
-                return false
-            }
+        if let time = dataModel.importDate,DataManger.share.deleteWith(importDate: time)
+        {
+            self.reloadCollectionView()
+            return true
+            //                self.collectionView.deleteItems(at: [indexPath])
+        } else {
+            return false
         }
-        return false
+        
     }
 }
 
@@ -198,6 +198,7 @@ class HomeCell: SwipeCollectionViewCell {
         
         if model.importDate == model.productDate {
             //滑动条
+            //TODO crash
             let percent = 1 - (model.productDate?.timeIntervalSinceNow)!/model.duration
             progress.progress = CGFloat(percent)
         } else {

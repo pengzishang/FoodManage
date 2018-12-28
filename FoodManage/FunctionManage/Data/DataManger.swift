@@ -65,7 +65,6 @@ class DataManger: NSObject {
         do {
             try context.save()
             NotificationCenter.default.post(name: DataManger.DataMangerDidSaveData, object: self.currentModel, userInfo: nil)
-            self.currentModel = nil
             return true
         } catch {
 //            let nserror = error as NSError
@@ -75,9 +74,10 @@ class DataManger: NSObject {
         
     }
 
-    func deleteWith(importDate: TimeInterval) -> Bool{
+    func deleteWith(importDate: Date) -> Bool{
         let fetchRequest: NSFetchRequest = FoodDateModel.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "importDate == %@", importDate)
+        let predicate = NSPredicate(format: "importDate == %@",importDate as CVarArg)
+        fetchRequest.predicate = predicate
         do {
             let result = try context.fetch(fetchRequest)
             for data in result {
@@ -115,21 +115,4 @@ class DataManger: NSObject {
         }
     }
 
-}
-
-extension FoodDateModel {
-    func importData(with data: FoodDateModel?) {
-        guard let data = data else {
-            return
-        }
-        self.duration = data.duration
-        self.imageData = data.imageData
-        self.importDate = data.importDate
-        self.inputName = data.inputName
-        self.isExpired = data.isExpired
-        self.position = data.position
-        self.suggestName = data.suggestName
-        self.productDate = data.productDate
-        self.expireDate = data.expireDate
-    }
 }

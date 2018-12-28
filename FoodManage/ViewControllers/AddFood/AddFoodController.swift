@@ -57,6 +57,7 @@ class AddFoodController: QMUICommonViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.title = "拍照!"
         if !isNew && !isNext{
             let image = UIImage.init(named: "Capa1")
             self.changeImageView(with: image!, buttomMargin: 120)
@@ -103,6 +104,7 @@ class AddFoodController: QMUICommonViewController {
         //建立
         DataManger.share.setupNew()
         DataManger.share.currentModel!.imageData = self.imageView.image?.jpegData(compressionQuality: 1)
+        //TODO
         DataManger.share.currentModel!.suggestName = self.testArray.first
         DataManger.share.currentInputName = self.testArray.first
         self.isNext = true
