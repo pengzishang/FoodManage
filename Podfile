@@ -24,5 +24,5 @@ target 'FoodManage' do
     pod 'QMUIKit'
     pod 'VegaScrollFlowLayout'
     pod 'SwipeCellKit'
-    
+    pod 'Segmentio'
 end

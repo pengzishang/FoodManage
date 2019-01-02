@@ -284,6 +284,7 @@ PODS:
   - QMUIKit/QMUIResources (2.9.3)
   - QMUIKit/QMUIWeakObjectContainer (2.9.3)
   - Schedule (1.0.0)
+  - Segmentio (3.2)
   - SnapKit (4.2.0)
   - STPopup (1.8.3)
   - SwiftDate (5.0.13)
@@ -304,6 +305,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - QMUIKit
   - Schedule
+  - Segmentio
   - SnapKit
   - STPopup
   - SwiftDate
@@ -326,6 +328,7 @@ SPEC REPOS:
     - pop
     - QMUIKit
     - Schedule
+    - Segmentio
     - SnapKit
     - STPopup
     - SwiftDate
@@ -347,6 +350,7 @@ SPEC CHECKSUMS:
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   QMUIKit: 5b8f0a3ab60e42af1310bd40a6fe1b54d612d15c
   Schedule: 64f334e01daa6f80201ab147b59cb4f1e118ae74
+  Segmentio: 4e63f9f7c22a58fba9e589e50f8803fd0a1b18c3
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   STPopup: da1167250a01584af7bcccb898653185f223ec46
   SwiftDate: f4aea5fa9dee812485f34041121a4cbde01b0dee
@@ -355,6 +359,6 @@ SPEC CHECKSUMS:
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 607529411127a739f63f3c30189e5e37a093cb3e
+PODFILE CHECKSUM: a485ce7cba92e4649d8a4d537af39ec5c8bc9f89
 
 COCOAPODS: 1.6.0.beta.2

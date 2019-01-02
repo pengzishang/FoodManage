@@ -14,28 +14,110 @@ import STPopup
 import QMUIKit
 import VegaScrollFlowLayout
 import SwipeCellKit
-
+import Segmentio
 
 protocol HomeCellDelegate : AnyObject {
     func didClickDeleteWith(indexPath:IndexPath) -> Bool
 }
 
+
+class TestCell: CBBaseGridCell {
+    
+    @IBOutlet weak var lbl: UILabel!
+    @IBOutlet weak var price: UILabel!
+    
+//    @IBOutlet weak var lblTimer: UILabel!
+//    @IBOutlet weak var lblPricer: UILabel!
+}
+
+class HeaderView: CBBaseHeader {
+//    @IBOutlet weak var csTextBottom: NSLayoutConstraint!
+//    @IBOutlet weak var csImageTop: NSLayoutConstraint!
+    
+    @IBOutlet weak var noticeLabelTop: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if UIApplication.shared.statusBarFrame.height > 20 {
+            noticeLabelTop.constant += 24
+        }
+    }
+    
+    override func update(toAnimationProgress progress: CGFloat) {
+        super.update(toAnimationProgress: progress)
+//        csTextBottom.constant = 44 + 200 * progress
+//        csImageTop.constant = -400 * progress * 1.5
+        UIView.animate(withDuration: 0.01) {
+            self.layoutIfNeeded()
+        }
+    }
+}
+
+class MenuView: CBBaseMenu {
+    //    @IBOutlet weak var csImageLeft: NSLayoutConstraint!
+    @IBOutlet open weak var segmentView: Segmentio!
+    
+    override func update(toAnimationProgress progress: CGFloat) {
+        super.update(toAnimationProgress: progress)
+        //        csImageLeft.constant = 50 - (50 - 30) * progress
+        UIView.animate(withDuration: 0.01) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        segmentView.setup(content: [SegmentioItem.init(title: "chicken", image: #imageLiteral(resourceName: "user")),SegmentioItem.init(title: "chicken", image: #imageLiteral(resourceName: "title")),SegmentioItem.init(title: "chicken", image: #imageLiteral(resourceName: "title")),SegmentioItem.init(title: "chicken", image: #imageLiteral(resourceName: "title"))], style: SegmentioStyle.onlyLabel, options: nil)
+        segmentView.selectedSegmentioIndex = 1
+    }
+
+}
+
+
 class HomePageController: UIViewController {
 
     @IBOutlet var emptyMainView: UIView!
     @IBOutlet var emptyTableGesture: UITapGestureRecognizer!
+//    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var menu : MenuView = MenuView()
+    
+    let viewAnimator = CBViewAnimator()
+    var titleSize: CGSize = .zero
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.wr_setNavBarShadowImageHidden(true)
+        self.wr_setNavBarBarTintColor(UIColor.clear)
+        let Menu = UINib(nibName: "Menu", bundle: nil)
+//        let menuView = Menu.instantiate(withOwner: <#T##Any?#>, options: <#T##[UINib.OptionsKey : Any]?#>)
+        collectionView.register(UINib(nibName: "Header", bundle: nil),
+                                forSupplementaryViewOfKind: CBSmoothScrollLayout.kCBAnimatedLayoutHeader,
+                                withReuseIdentifier: CBSmoothScrollLayout.kCBAnimatedLayoutHeader)
+        collectionView.register(Menu,
+                                forSupplementaryViewOfKind: CBSmoothScrollLayout.kCBAnimatedLayoutMenu,
+                                withReuseIdentifier: CBSmoothScrollLayout.kCBAnimatedLayoutMenu)
+        collectionView.register(UINib(nibName: "Title", bundle: nil),
+                                forSupplementaryViewOfKind: CBSmoothScrollLayout.kCBAnimatedLayoutTitle,
+                                withReuseIdentifier: CBSmoothScrollLayout.kCBAnimatedLayoutTitle)
+        if let title = UINib(nibName: "Title", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView {
+            title.sizeToFit()
+            titleSize = title.frame.size
+        }
+    }
+    
+    
+    
 
     lazy var addFoodVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddFoodController") as! AddFoodController
     var dataList = DataManger.share.fetchAll()
 
-    fileprivate func styleCell() {
-        let layout = VegaScrollFlowLayout()
-        layout.minimumLineSpacing = 00
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 120)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 55, right: 0)
-        collectionView.collectionViewLayout = layout
-    }
 
     fileprivate func demoTip() {
         if self.dataList.count > 0 {
@@ -50,15 +132,16 @@ class HomePageController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        styleCell()
-        demoTip()
-        self.wr_setNavBarShadowImageHidden(true)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollectionView), name: DataManger.DataMangerDidSaveData, object: nil)
-
-//        PushManager.share.addLocalNotification()
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        styleCell()
+//        demoTip()
+//        self.wr_setNavBarShadowImageHidden(true)
+//        self.wr_setNavBarBarTintColor(UIColor.clear)
+//        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollectionView), name: DataManger.DataMangerDidSaveData, object: nil)
+//
+////        PushManager.share.addLocalNotification()
+//    }
     
     @IBAction func didBeginAdding(_ sender: Any) {
         let popupController  = STPopupController.init(rootViewController: addFoodVC)
@@ -82,13 +165,18 @@ class HomePageController: UIViewController {
         collectionView.reloadData()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        addFoodVC.isNext = false
-        addFoodVC.isNew = false
-        reloadCollectionView()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        addFoodVC.isNext = false
+//        addFoodVC.isNew = false
+//        reloadCollectionView()
+//    }
 
+    
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -101,30 +189,98 @@ class HomePageController: UIViewController {
 
 }
 
-extension HomePageController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataList.count
+extension HomePageController: UICollectionViewSmoothScrollLayoutDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let supplementaryView: UICollectionReusableView
+        switch kind {
+        case CBSmoothScrollLayout.kCBAnimatedLayoutHeader:
+            supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kind, for: indexPath)
+        case CBSmoothScrollLayout.kCBAnimatedLayoutMenu:
+            supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kind, for: indexPath)
+            if let ss = supplementaryView as? MenuView {
+                menu = ss
+            }
+        case CBSmoothScrollLayout.kCBAnimatedLayoutTitle:
+            supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kind, for: indexPath)
+            
+        default:
+            fatalError("unexpected element type")
+        }
+        
+        
+        if let animatableView = supplementaryView as? CBAnimatable {
+            viewAnimator.register(animatableView: animatableView)
+        }
+        return supplementaryView
     }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        cell.data(with: dataList[indexPath.row])
-        cell.controlDelegate = self
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    var dateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter
+    }
+    var startDate: Date {
+        return dateFormatter.date(from: "11:00") ?? Date()
+    }
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath)
+        if let cell = cell as? TestCell {
+            cell.lbl.text = dateFormatter.string(from: startDate.addingTimeInterval(TimeInterval(60*30*indexPath.item)))
+            viewAnimator.register(animatableView: cell)
+            cell.price.text = "$\(Int.random(in: 1...12) * 10)"
+        }
         return cell
     }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-//        let cell = collectionView.cellForItem(at: indexPath) as! HomeCell
-////        cell.showSwipe(orientation: .right, animated: true) { (_) in
-////
-////        }
-//        cell.setSwipeOffset(10, animated: true) { (_) in
-//
-//        }
-
+    
+    @objc func collectionView(_ collectionView: UICollectionView, didUpdateAnimationTo progress: CGFloat) {
+        viewAnimator.updateAnimation(toProgress: progress)
+    }
+    
+    @objc func collectionView(_ collectionView: UICollectionView, titleSizeForProgress progress: CGFloat) -> CGSize {
+        return titleSize
+    }
+    
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        menu.segmentView.reloadSegmentio()
+        UIView.animate(withDuration: 0.1) {
+            self.menu.segmentView.layoutIfNeeded()
+        }
+        
     }
 }
+
+//extension HomePageController: UICollectionViewDataSource, UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 0
+//        return dataList.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
+//        cell.data(with: dataList[indexPath.row])
+//        cell.controlDelegate = self
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        collectionView.deselectItem(at: indexPath, animated: true)
+////        let cell = collectionView.cellForItem(at: indexPath) as! HomeCell
+//////        cell.showSwipe(orientation: .right, animated: true) { (_) in
+//////
+//////        }
+////        cell.setSwipeOffset(10, animated: true) { (_) in
+////
+////        }
+//
+//    }
+//}
 
 extension HomePageController : HomeCellDelegate {
     func didClickDeleteWith(indexPath: IndexPath) -> Bool {
@@ -242,3 +398,4 @@ extension HomeCell: SwipeCollectionViewCellDelegate {
         return options
     }
 }
+

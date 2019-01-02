@@ -20,6 +20,17 @@
 		6463619D218C5FEC007AE054 /* AddExpirationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463619C218C5FEC007AE054 /* AddExpirationController.swift */; };
 		646361A221902570007AE054 /* AlbumNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646361A121902570007AE054 /* AlbumNavigationController.swift */; };
 		646361A421902896007AE054 /* AlbumImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646361A321902896007AE054 /* AlbumImagePickerController.swift */; };
+		649DB7BD21D61EBC001906F3 /* FMBlurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DB7B421D61EBC001906F3 /* FMBlurable.swift */; };
+		649DB7BE21D61EBC001906F3 /* CBBaseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DB7B521D61EBC001906F3 /* CBBaseHeader.swift */; };
+		649DB7BF21D61EBC001906F3 /* CBTitleBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DB7B621D61EBC001906F3 /* CBTitleBlock.swift */; };
+		649DB7C021D61EBC001906F3 /* CBBaseGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DB7B721D61EBC001906F3 /* CBBaseGridCell.swift */; };
+		649DB7C121D61EBC001906F3 /* Title.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649DB7B821D61EBC001906F3 /* Title.xib */; };
+		649DB7C221D61EBC001906F3 /* CBSmoothScrollLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DB7B921D61EBC001906F3 /* CBSmoothScrollLayout.swift */; };
+		649DB7C321D61EBC001906F3 /* CBBaseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DB7BA21D61EBC001906F3 /* CBBaseMenu.swift */; };
+		649DB7C421D61EBC001906F3 /* CBViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DB7BB21D61EBC001906F3 /* CBViewAnimator.swift */; };
+		649DB7C521D61EBC001906F3 /* UIColor+Decompose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DB7BC21D61EBC001906F3 /* UIColor+Decompose.swift */; };
+		649DB7C821D61F6E001906F3 /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649DB7C621D61F6D001906F3 /* Header.xib */; };
+		649DB7C921D61F6E001906F3 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649DB7C721D61F6D001906F3 /* Menu.xib */; };
 		64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515921807B0700A0EB07 /* UIViewController+ClassNamePrint.m */; };
 		64BD515F21807B0C00A0EB07 /* LoadingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD515E21807B0C00A0EB07 /* LoadingMethods.m */; };
 		64BD516C218199C200A0EB07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64BD516E218199C200A0EB07 /* InfoPlist.strings */; };
@@ -94,6 +105,17 @@
 		646361A121902570007AE054 /* AlbumNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumNavigationController.swift; sourceTree = "<group>"; };
 		646361A321902896007AE054 /* AlbumImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumImagePickerController.swift; sourceTree = "<group>"; };
 		649DB7AE21D4D800001906F3 /* FoodDataMode20181227.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodDataMode20181227.xcdatamodel; sourceTree = "<group>"; };
+		649DB7B421D61EBC001906F3 /* FMBlurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMBlurable.swift; sourceTree = "<group>"; };
+		649DB7B521D61EBC001906F3 /* CBBaseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBBaseHeader.swift; sourceTree = "<group>"; };
+		649DB7B621D61EBC001906F3 /* CBTitleBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBTitleBlock.swift; sourceTree = "<group>"; };
+		649DB7B721D61EBC001906F3 /* CBBaseGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBBaseGridCell.swift; sourceTree = "<group>"; };
+		649DB7B821D61EBC001906F3 /* Title.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Title.xib; sourceTree = "<group>"; };
+		649DB7B921D61EBC001906F3 /* CBSmoothScrollLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBSmoothScrollLayout.swift; sourceTree = "<group>"; };
+		649DB7BA21D61EBC001906F3 /* CBBaseMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBBaseMenu.swift; sourceTree = "<group>"; };
+		649DB7BB21D61EBC001906F3 /* CBViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBViewAnimator.swift; sourceTree = "<group>"; };
+		649DB7BC21D61EBC001906F3 /* UIColor+Decompose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Decompose.swift"; sourceTree = "<group>"; };
+		649DB7C621D61F6D001906F3 /* Header.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
+		649DB7C721D61F6D001906F3 /* Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Menu.xib; sourceTree = "<group>"; };
 		64BD515621807B0600A0EB07 /* FoodManage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodManage-Bridging-Header.h"; sourceTree = "<group>"; };
 		64BD515721807B0700A0EB07 /* UIViewController+ClassNamePrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ClassNamePrint.h"; sourceTree = "<group>"; };
 		64BD515821807B0700A0EB07 /* UIViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Refresh.m"; sourceTree = "<group>"; };
@@ -180,6 +202,7 @@
 		6405920B2186AE0E003CF5C7 /* Three Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				649DB7B321D61EBC001906F3 /* SmoothScroll */,
 				64E5CA332192F37100E14751 /* DatePickerDialog.swift */,
 				640592122186AE6B003CF5C7 /* LDProgressView */,
 			);
@@ -216,6 +239,22 @@
 				64E30F12218F331A004145BA /* AlbumPreviewController.swift */,
 			);
 			path = AddFood;
+			sourceTree = "<group>";
+		};
+		649DB7B321D61EBC001906F3 /* SmoothScroll */ = {
+			isa = PBXGroup;
+			children = (
+				649DB7B421D61EBC001906F3 /* FMBlurable.swift */,
+				649DB7B521D61EBC001906F3 /* CBBaseHeader.swift */,
+				649DB7B621D61EBC001906F3 /* CBTitleBlock.swift */,
+				649DB7B721D61EBC001906F3 /* CBBaseGridCell.swift */,
+				649DB7B821D61EBC001906F3 /* Title.xib */,
+				649DB7B921D61EBC001906F3 /* CBSmoothScrollLayout.swift */,
+				649DB7BA21D61EBC001906F3 /* CBBaseMenu.swift */,
+				649DB7BB21D61EBC001906F3 /* CBViewAnimator.swift */,
+				649DB7BC21D61EBC001906F3 /* UIColor+Decompose.swift */,
+			);
+			path = SmoothScroll;
 			sourceTree = "<group>";
 		};
 		64BD516821807BF300A0EB07 /* Extension */ = {
@@ -261,6 +300,8 @@
 		64BD51752181ABFC00A0EB07 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				649DB7C621D61F6D001906F3 /* Header.xib */,
+				649DB7C721D61F6D001906F3 /* Menu.xib */,
 				64BD51762181AC7700A0EB07 /* HomePageController.swift */,
 				640592142186C15D003CF5C7 /* AskPermissionController.swift */,
 				640592162186C1A5003CF5C7 /* TabBarController.swift */,
@@ -433,7 +474,10 @@
 			files = (
 				64E23493217CD10F004F98D0 /* LaunchScreen.storyboard in Resources */,
 				64BD516C218199C200A0EB07 /* InfoPlist.strings in Resources */,
+				649DB7C121D61EBC001906F3 /* Title.xib in Resources */,
 				64BD517B2181C8B700A0EB07 /* Demo.png in Resources */,
+				649DB7C921D61F6E001906F3 /* Menu.xib in Resources */,
+				649DB7C821D61F6E001906F3 /* Header.xib in Resources */,
 				64E23490217CD10F004F98D0 /* Assets.xcassets in Resources */,
 				64E2348E217CD10C004F98D0 /* Main.storyboard in Resources */,
 				6405921A2186DF59003CF5C7 /* Demo.mov in Resources */,
@@ -460,6 +504,7 @@
 				"${BUILT_PRODUCTS_DIR}/QMUIKit/QMUIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
+				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
@@ -481,6 +526,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QMUIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
@@ -529,27 +575,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				6410B4A121885B4F00D35C6F /* FoodDataModel.xcdatamodeld in Sources */,
+				649DB7C221D61EBC001906F3 /* CBSmoothScrollLayout.swift in Sources */,
 				646361A221902570007AE054 /* AlbumNavigationController.swift in Sources */,
 				64F135842192D556001C76D4 /* TextField.swift in Sources */,
 				64F135882192D5EB001C76D4 /* OneTextFieldViewController.swift in Sources */,
 				6416BDE62189B4AD00CEFF3A /* AddFoodController.swift in Sources */,
+				649DB7BF21D61EBC001906F3 /* CBTitleBlock.swift in Sources */,
 				646361A421902896007AE054 /* AlbumImagePickerController.swift in Sources */,
 				64E30F13218F331A004145BA /* AlbumPreviewController.swift in Sources */,
 				64BD515F21807B0C00A0EB07 /* LoadingMethods.m in Sources */,
 				64BD515C21807B0700A0EB07 /* UIViewController+ClassNamePrint.m in Sources */,
 				64F1357D2192CE99001C76D4 /* UIAlertController+Extensions.swift in Sources */,
+				649DB7C521D61EBC001906F3 /* UIColor+Decompose.swift in Sources */,
 				64F135862192D581001C76D4 /* UITextField+Extensions.swift in Sources */,
+				649DB7C021D61EBC001906F3 /* CBBaseGridCell.swift in Sources */,
 				640592152186C15D003CF5C7 /* AskPermissionController.swift in Sources */,
 				640592102186AE22003CF5C7 /* UIColor+RGBValues.m in Sources */,
 				64E23487217CD10C004F98D0 /* AppDelegate.swift in Sources */,
 				64E5CA322192E37D00E14751 /* DatePickerViewController.swift in Sources */,
+				649DB7BD21D61EBC001906F3 /* FMBlurable.swift in Sources */,
+				649DB7BE21D61EBC001906F3 /* CBBaseHeader.swift in Sources */,
 				64BD517421819D8900A0EB07 /* PushManager.swift in Sources */,
+				649DB7C321D61EBC001906F3 /* CBBaseMenu.swift in Sources */,
 				6463619D218C5FEC007AE054 /* AddExpirationController.swift in Sources */,
 				64F135822192CF5A001C76D4 /* UIView+Extensions.swift in Sources */,
 				64E5CA302192DE5C00E14751 /* UIButton+FontScale.m in Sources */,
 				6410B49C21884BFE00D35C6F /* NSDate+Extension.m in Sources */,
 				64E5CA342192F37100E14751 /* DatePickerDialog.swift in Sources */,
 				640592172186C1A5003CF5C7 /* TabBarController.swift in Sources */,
+				649DB7C421D61EBC001906F3 /* CBViewAnimator.swift in Sources */,
 				64E30F11218F3166004145BA /* AlbumViewController.swift in Sources */,
 				64BD51772181AC7700A0EB07 /* HomePageController.swift in Sources */,
 				640592112186AE22003CF5C7 /* LDProgressView.m in Sources */,
